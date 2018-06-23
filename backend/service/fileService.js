@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const PORT = 6010;
 const SERVICE_NAME = "fileService";
-
+//hallo Daniel 
 const FileServiceActions = require('./FileServiceActions');
 
 app.use(cors());
