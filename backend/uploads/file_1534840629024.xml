@@ -1,0 +1,3099 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="95210003-85ab-45e5-a00b-6201f36fd013" activeEnvironment="Default" name="IPH" resourceRoot="" soapui-version="5.3.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="d4e26fc0-8112-4e91-b254-87f6608e89a5" wsaVersion="NONE" name="ValidateDataBinding" type="wsdl" bindingName="{http://service.wega.audi.com/WegaService/}ValidateDataBinding" soapVersion="1_1" anonymous="optional" definition="https://tui-wega.audi.com/WegaService/services/GetFormatPort?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://tui-wega.audi.com/WegaService/services/ValidateDataPort</con:endpoint></con:endpoints><con:operation id="d2f35cda-2b64-42db-a51f-007130655887" isOneWay="false" action="http://service.wega.audi.com/WegaService/validateData/" name="validateData" bindingOperationName="validateData" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="cccf0632-eabd-4074-ac85-37492f7fd48c" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://tui-wega.audi.com/WegaService/services/ValidateDataPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.wega.audi.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ser:ValidateDatavalidateDataRequest1>\r
+         <version>?</version>\r
+         <application>?</application>\r
+         <process>?</process>\r
+         <languageISOId>?</languageISOId>\r
+         <countryISOId>?</countryISOId>\r
+         <!--Zero or more repetitions:-->\r
+         <group>\r
+            <id>?</id>\r
+            <!--Zero or more repetitions:-->\r
+            <field>\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <value>?</value>\r
+               <!--Zero or more repetitions:-->\r
+               <list>\r
+                  <!--Optional:-->\r
+                  <key>?</key>\r
+                  <value>?</value>\r
+                  <checked>?</checked>\r
+               </list>\r
+               <!--Optional:-->\r
+               <changed>?</changed>\r
+            </field>\r
+            <!--Zero or more repetitions:-->\r
+            <group/>\r
+         </group>\r
+      </ser:ValidateDatavalidateDataRequest1>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/validateData/"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="00d15026-4e1c-495e-9d89-359b32a76bc3" wsaVersion="NONE" name="DoItBinding" type="wsdl" bindingName="{http://service.wega.audi.com/WegaService/}DoItBinding" soapVersion="1_1" anonymous="optional" definition="https://tui-wega.audi.com/WegaService/services/GetFormatPort?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="https://tui-wega.audi.com/WegaService/services/GetFormatPort?wsdl"><con:part><con:url>https://tui-wega.audi.com/WegaService/services/GetFormatPort?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="WegaService" targetNamespace="http://service.wega.audi.com/WegaService/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://service.wega.audi.com/WegaService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl_1="http://service.wega.audi.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>The WEGA service is the web service for centralized validating, storing, and exporting data from web applications. 
+It provides 4 service ports: GetDataPort, ValidateDataPort, SaveDataPort, and ExportDataPort. The GetDataPort 
+returns the meta data as well as the persistant data back to the web application. The ValidateDataPort provides 
+different validation mechanisms depending on the calling application. The SaveDataPort is used for storing data into 
+the database, in the initial version of the web service the user profile can be stored. The ExportDataPort is used to
+ transfer data from the web applications to external legacy systems, like the SAP CRM system KuBa. The web service
+contains an internal workflow engine, which manages the validation and the export. The calling web application needs
+not to know which validations and exports will be performed.</wsdl:documentation>
+  <wsdl:import location="../wsdl/com/audi/wega/service/service.wsdl" namespace="http://service.wega.audi.com/"/>
+  <wsdl:binding name="ExportDataBinding" type="wsdl_1:ExportData">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="exportData">
+      <soap:operation soapAction="http://service.wega.audi.com/WegaService/exportData/"/>
+      <wsdl:input>
+        <soap:body parts="wegaRequest" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="wegaResponse" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="exportDataFault">
+        <soap:fault name="exportDataFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SaveDataBinding" type="wsdl_1:SaveData">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="saveData">
+      <soap:operation soapAction="http://service.wega.audi.com/WegaService/saveData/"/>
+      <wsdl:input>
+        <soap:body parts="wegaRequest" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="wegaResponse" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="saveDataFault">
+        <soap:fault name="saveDataFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ValidateDataBinding" type="wsdl_1:ValidateData">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="validateData">
+      <soap:operation soapAction="http://service.wega.audi.com/WegaService/validateData/"/>
+      <wsdl:input>
+        <soap:body parts="wegaRequest" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="wegaResponse" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="validateDataFault">
+        <soap:fault name="validateDataFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GetDataBinding" type="wsdl_1:GetData">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getData">
+      <soap:operation soapAction="http://service.wega.audi.com/WegaService/getData/"/>
+      <wsdl:input>
+        <soap:body parts="wegaRequest" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="wegaResponse" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getDataFault">
+        <soap:fault name="getDataFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GetFormatBinding" type="wsdl_1:GetFormat">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getFormat">
+      <soap:operation soapAction="http://service.wega.audi.com/WegaService/getFormat/"/>
+      <wsdl:input>
+        <soap:body parts="wegaRequest" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="wegaResponse" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getFormatFault">
+        <soap:fault name="getFormatFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DoItBinding" type="wsdl_1:DoIt">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="doIt">
+      <soap:operation soapAction="http://service.wega.audi.com/WegaService/doIt/"/>
+      <wsdl:input>
+        <soap:body parts="wegaRequest" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="wegaResponse" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="doItFault">
+        <soap:fault name="doItFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wega">
+    <wsdl:port binding="tns:ExportDataBinding" name="ExportDataPort">
+      <soap:address location="http://tui-wega.audi.com/WegaService/services/ExportDataPort"/>
+    </wsdl:port>
+    <wsdl:port binding="tns:SaveDataBinding" name="SaveDataPort">
+      <soap:address location="http://tui-wega.audi.com/WegaService/services/SaveDataPort"/>
+    </wsdl:port>
+    <wsdl:port binding="tns:ValidateDataBinding" name="ValidateDataPort">
+      <soap:address location="http://tui-wega.audi.com/WegaService/services/ValidateDataPort"/>
+    </wsdl:port>
+    <wsdl:port binding="tns:GetDataBinding" name="GetDataPort">
+      <soap:address location="http://tui-wega.audi.com/WegaService/services/GetDataPort"/>
+    </wsdl:port>
+    <wsdl:port binding="tns:GetFormatBinding" name="GetFormatPort">
+      <soap:address location="http://tui-wega.audi.com/WegaService/services/GetFormatPort"/>
+    </wsdl:port>
+    <wsdl:port binding="tns:DoItBinding" name="DoItPort">
+      <soap:address location="http://tui-wega.audi.com/WegaService/services/DoItPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>https://tui-wega.audi.com/WegaService/wsdl/com/audi/wega/service/service.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="service" targetNamespace="http://service.wega.audi.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://service.wega.audi.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://service.wega.audi.com/" xmlns:xsd_1="http://data.service.wega.audi.com/" xmlns:xsd_2="http://exception.service.wega.audi.com/" xmlns:xsd_3="http://dataformat.service.wega.audi.com/">
+      <xsd:import namespace="http://dataformat.service.wega.audi.com/" schemaLocation="dataformat/dataformat.xsd"/>
+      <xsd:import namespace="http://exception.service.wega.audi.com/" schemaLocation="exception/exception.xsd"/>
+      <xsd:import namespace="http://data.service.wega.audi.com/" schemaLocation="data/data.xsd"/>
+      <xsd:element name="ExportDataexportDataRequest1" type="xsd_1:WegaData"/>
+      <xsd:element name="ExportDataexportDataResponse1" type="xsd_1:WegaData"/>
+      <xsd:element name="ExportDataexportDataFault1" type="xsd_2:WegaException"/>
+      <xsd:element name="SaveDatasaveDataRequest1" type="xsd_1:WegaData"/>
+      <xsd:element name="SaveDatasaveDataResponse1" type="xsd_1:WegaData"/>
+      <xsd:element name="SaveDatasaveDataFault1" type="xsd_2:WegaException"/>
+      <xsd:element name="ValidateDatavalidateDataRequest1" type="xsd_1:WegaData"/>
+      <xsd:element name="ValidateDatavalidateDataResponse1" type="xsd_1:WegaData"/>
+      <xsd:element name="ValidateDatavalidateDataFault1" type="xsd_2:WegaException"/>
+      <xsd:element name="GetDatagetDataRequest1" type="xsd_1:WegaData"/>
+      <xsd:element name="GetDatagetDataResponse1" type="xsd_1:WegaData"/>
+      <xsd:element name="GetDatagetDataFault1" type="xsd_2:WegaException"/>
+      <xsd:element name="GetFormatgetFormatRequest1" type="xsd_1:WegaData"/>
+      <xsd:element name="GetFormatgetFormatResponse1" type="xsd_3:WegaFormat"/>
+      <xsd:element name="GetFormatgetFormatFault1" type="xsd_2:WegaException"/>
+      <xsd:element name="DoItdoItRequest1" type="xsd_1:WegaData"/>
+      <xsd:element name="DoItdoItFault1" type="xsd_2:WegaException"/>
+      <xsd:element name="DoItdoItResponse1" type="xsd_1:WegaData"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ExportDataexportDataRequest">
+    <wsdl:part element="tns:ExportDataexportDataRequest1" name="wegaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ExportDataexportDataResponse">
+    <wsdl:part element="tns:ExportDataexportDataResponse1" name="wegaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ExportDataexportDataFault">
+    <wsdl:part element="tns:ExportDataexportDataFault1" name="wegaException"/>
+  </wsdl:message>
+  <wsdl:message name="SaveDatasaveDataRequest">
+    <wsdl:part element="tns:SaveDatasaveDataRequest1" name="wegaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="SaveDatasaveDataResponse">
+    <wsdl:part element="tns:SaveDatasaveDataResponse1" name="wegaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SaveDatasaveDataFault">
+    <wsdl:part element="tns:SaveDatasaveDataFault1" name="wegaException"/>
+  </wsdl:message>
+  <wsdl:message name="ValidateDatavalidateDataRequest">
+    <wsdl:part element="tns:ValidateDatavalidateDataRequest1" name="wegaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ValidateDatavalidateDataResponse">
+    <wsdl:part element="tns:ValidateDatavalidateDataResponse1" name="wegaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ValidateDatavalidateDataFault">
+    <wsdl:part element="tns:ValidateDatavalidateDataFault1" name="wegaException"/>
+  </wsdl:message>
+  <wsdl:message name="GetDatagetDataRequest">
+    <wsdl:part element="tns:GetDatagetDataRequest1" name="wegaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetDatagetDataResponse">
+    <wsdl:part element="tns:GetDatagetDataResponse1" name="wegaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetDatagetDataFault">
+    <wsdl:part element="tns:GetDatagetDataFault1" name="wegaException"/>
+  </wsdl:message>
+  <wsdl:message name="GetFormatgetFormatRequest">
+    <wsdl:part element="tns:GetFormatgetFormatRequest1" name="wegaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetFormatgetFormatResponse">
+    <wsdl:part element="tns:GetFormatgetFormatResponse1" name="wegaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetFormatgetFormatFault">
+    <wsdl:part element="tns:GetFormatgetFormatFault1" name="wegaException"/>
+  </wsdl:message>
+  <wsdl:message name="DoItdoItRequest">
+    <wsdl:part element="tns:DoItdoItRequest1" name="wegaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="DoItdoItResponse">
+    <wsdl:part element="tns:DoItdoItResponse1" name="wegaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DoItdoItFault">
+    <wsdl:part element="tns:DoItdoItFault1" name="wegaException"/>
+  </wsdl:message>
+  <wsdl:portType name="ExportData">
+    <wsdl:documentation>The interface ExportData is the service endpoint interface of the web service export process.</wsdl:documentation>
+    <wsdl:operation name="exportData">
+      <wsdl:documentation>The main method of the export process. The web service decides from its configuration whereto the data have to be transferred. The data have to be transferred as WegaData. After the execution the method gives back the actual WegaData. In case of errors a WegaException is thrown with an WegaError object included containing all exceptions.</wsdl:documentation>
+      <wsdl:input message="tns:ExportDataexportDataRequest"/>
+      <wsdl:output message="tns:ExportDataexportDataResponse"/>
+      <wsdl:fault message="tns:ExportDataexportDataFault" name="exportDataFault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SaveData">
+    <wsdl:documentation>The interface SaveData is the service endpoint interface of the web service save process.</wsdl:documentation>
+    <wsdl:operation name="saveData">
+      <wsdl:documentation>The main method of the save process. The web service decides from its configuration which data have to be stored. The data have to be transferred as WegaData. After the execution the method gives back the actual WegaData. In case of errors a WegaException is thrown with an WegaError object included containing all exceptions.</wsdl:documentation>
+      <wsdl:input message="tns:SaveDatasaveDataRequest"/>
+      <wsdl:output message="tns:SaveDatasaveDataResponse"/>
+      <wsdl:fault message="tns:SaveDatasaveDataFault" name="saveDataFault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ValidateData">
+    <wsdl:documentation>The interface ValidateData is the service endpoint interface of the web service validation process.</wsdl:documentation>
+    <wsdl:operation name="validateData">
+      <wsdl:documentation>The main method of the validation process. The web service decides from its configuration which validation will be performed. The data have to be transferred as WegaData. After the execution the method gives back the actual WegaData. In case of errors a WegaException is thrown with an WegaError object included containing all exceptions.</wsdl:documentation>
+      <wsdl:input message="tns:ValidateDatavalidateDataRequest"/>
+      <wsdl:output message="tns:ValidateDatavalidateDataResponse"/>
+      <wsdl:fault message="tns:ValidateDatavalidateDataFault" name="validateDataFault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="GetData">
+    <wsdl:documentation>The interface GetData is the service endpoint interface of the web service get data process.</wsdl:documentation>
+    <wsdl:operation name="getData">
+      <wsdl:documentation>The main method of the get data process. The web service returns the metadata as well as the persistent data, if there is an user id within the WegaData transferred. The data have to be transferred as WegaData. After the execution the method gives back the actual WegaFormat. In case of errors a WegaException is thrown with an WegaError object included containing all exceptions.</wsdl:documentation>
+      <wsdl:input message="tns:GetDatagetDataRequest"/>
+      <wsdl:output message="tns:GetDatagetDataResponse"/>
+      <wsdl:fault message="tns:GetDatagetDataFault" name="getDataFault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="GetFormat">
+    <wsdl:operation name="getFormat">
+      <wsdl:input message="tns:GetFormatgetFormatRequest"/>
+      <wsdl:output message="tns:GetFormatgetFormatResponse"/>
+      <wsdl:fault message="tns:GetFormatgetFormatFault" name="getFormatFault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="DoIt">
+    <wsdl:operation name="doIt">
+      <wsdl:documentation>The main method of the do it process. The data have to be transferred as WegaData. After the execution the method gives back the actual WegaFormat. In case of errors a WegaException is thrown with an WegaError object included containing all exceptions.</wsdl:documentation>
+      <wsdl:input message="tns:DoItdoItRequest"/>
+      <wsdl:output message="tns:DoItdoItResponse"/>
+      <wsdl:fault message="tns:DoItdoItFault" name="doItFault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>https://tui-wega.audi.com/WegaService/wsdl/com/audi/wega/service/dataformat/dataformat.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://dataformat.service.wega.audi.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd_1="http://dataformat.service.wega.audi.com/" xmlns:xsd_2="http://data.service.wega.audi.com/">
+  <xsd:import namespace="http://data.service.wega.audi.com/" schemaLocation="../data/data.xsd"/>
+  <xsd:simpleType name="FormatFieldType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="STRING"/>
+      <xsd:enumeration value="INT"/>
+      <xsd:enumeration value="FLOAT"/>
+      <xsd:enumeration value="BOOLEAN"/>
+      <xsd:enumeration value="LIST"/>
+      <xsd:enumeration value="DATE"/>
+      <xsd:enumeration value="DATETIME"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="FormatAccessType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="READ"/>
+      <xsd:enumeration value="WRITE"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="FormatField">
+    <xsd:complexContent>
+      <xsd:extension base="xsd_2:DataField">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="csgElement" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="label" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="subline" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="infoText" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="example" type="xsd:string"/>
+          <xsd:element name="type" type="xsd_1:FormatFieldType"/>
+          <xsd:element name="mandatory" type="xsd:boolean"/>
+          <xsd:element name="access" type="xsd_1:FormatAccessType"/>
+          <xsd:element minOccurs="0" name="length" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="multipleSelection" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="dynamic" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="dependency" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="FormatGroup">
+    <xsd:sequence>
+      <xsd:element name="id" type="xsd:string"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="field" type="xsd_1:FormatField"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="group" type="xsd_1:FormatGroup"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="WegaFormat">
+    <xsd:sequence>
+      <xsd:element name="version" type="xsd:string"/>
+      <xsd:element name="application" type="xsd:string"/>
+      <xsd:element name="process" type="xsd:string"/>
+      <xsd:element name="languageISOId" type="xsd:string"/>
+      <xsd:element name="countryISOId" type="xsd:string"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="group" type="xsd_1:FormatGroup"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>https://tui-wega.audi.com/WegaService/wsdl/com/audi/wega/service/data/data.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://data.service.wega.audi.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd_1="http://data.service.wega.audi.com/">
+  <xsd:complexType name="DataFieldList">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="key" type="xsd:string"/>
+      <xsd:element name="value" type="xsd:string"/>
+      <xsd:element name="checked" type="xsd:boolean"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DataField">
+    <xsd:sequence>
+      <xsd:element name="id" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="value" type="xsd:string"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="list" type="xsd_1:DataFieldList"/>
+      <xsd:element minOccurs="0" name="changed" type="xsd:boolean"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DataGroup">
+    <xsd:sequence>
+      <xsd:element name="id" type="xsd:string"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="field" type="xsd_1:DataField"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="group" type="xsd_1:DataGroup"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="WegaData">
+    <xsd:annotation>
+      <xsd:documentation>The class &lt;code>WegaData&lt;/code> is the unique data container, that holds the data transfered through the web service.
+
+@author Norbert Reschauer, IBM
+@version 1.00.00</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="version" type="xsd:string"/>
+      <xsd:element name="application" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The application id of the requesting application.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="process" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The id of the requesting process, depends on the {@see application} id.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="languageISOId" type="xsd:string"/>
+      <xsd:element name="countryISOId" type="xsd:string"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="group" type="xsd_1:DataGroup"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>https://tui-wega.audi.com/WegaService/wsdl/com/audi/wega/service/exception/exception.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://exception.service.wega.audi.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd_1="http://exception.service.wega.audi.com/" xmlns:xsd_2="http://data.service.wega.audi.com/">
+  <xsd:import namespace="http://data.service.wega.audi.com/" schemaLocation="../data/data.xsd"/>
+  <xsd:simpleType name="WegaExceptionSeverity">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="INFO"/>
+      <xsd:enumeration value="WARN"/>
+      <xsd:enumeration value="ERROR"/>
+      <xsd:enumeration value="FATAL"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="ErrorChoiceColumnType">
+    <xsd:sequence>
+      <xsd:element name="fieldId" type="xsd:string"/>
+      <xsd:element name="value" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ErrorChoiceRowType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="errorChoiceColumn" type="xsd_1:ErrorChoiceColumnType"/>
+      <xsd:element name="errorChoiceRowNumber" type="xsd:int"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ErrorChoiceList">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="errorChoiceRow" type="xsd_1:ErrorChoiceRowType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FieldError">
+    <xsd:sequence>
+      <xsd:element name="errorId" type="xsd:string"/>
+      <xsd:element name="errorMessage" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="errorChoice" type="xsd_1:ErrorChoiceList"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ErrorField">
+    <xsd:complexContent>
+      <xsd:extension base="xsd_2:DataField">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="fielderror" type="xsd_1:FieldError"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ErrorGroup">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="field" type="xsd_1:ErrorField"/>
+      <xsd:element name="id" type="xsd:string"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="group" type="xsd_1:ErrorGroup"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="WegaError">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="group" type="xsd_1:ErrorGroup"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="WegaException">
+    <xsd:sequence>
+      <xsd:element name="version" type="xsd:string"/>
+      <xsd:element name="application" type="xsd:string"/>
+      <xsd:element name="process" type="xsd:string"/>
+      <xsd:element name="languageISOId" type="xsd:string"/>
+      <xsd:element name="countryISOId" type="xsd:string"/>
+      <xsd:element name="errorId" type="xsd:string"/>
+      <xsd:element name="errorType" type="xsd:string"/>
+      <xsd:element name="severity" type="xsd_1:WegaExceptionSeverity"/>
+      <xsd:element name="errorMessage" type="xsd:string"/>
+      <xsd:element name="wegaError" type="xsd_1:WegaError"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://tui-wega.audi.com/WegaService/services/DoItPort</con:endpoint></con:endpoints><con:operation id="68e61e73-2c5a-474f-a322-247e5f08743b" isOneWay="false" action="http://service.wega.audi.com/WegaService/doIt/" name="doIt" bindingOperationName="doIt" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="69f9a3a4-cd9d-4c04-a5d4-936580e074b6" name="iph_contact_lt"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://tui-wega.audi.com/WegaService/services/DoItPort</con:endpoint><con:request><![CDATA[<wsdl:definitions targetNamespace="urn:sap-com:document:sap:rfc:functions" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsoap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="urn:sap-com:document:sap:rfc:functions" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+   <wsdl:documentation>
+      <sidl:sidl xmlns:sidl="http://www.sap.com/2007/03/sidl"/>
+   </wsdl:documentation>
+   <wsp:UsingPolicy wsdl:required="true"/>
+   <wsp:Policy wsu:Id="BN__ZTEST">
+      <wsp:ExactlyOne>
+         <wsp:All>
+            <sapattahnd:Enabled xmlns:sapattahnd="http://www.sap.com/710/features/attachment/">false</sapattahnd:Enabled>
+            <saptrnbnd:OptimizedMimeSerialization wsp:Optional="true" xmlns:saptrnbnd="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization"/>
+            <wsrmp:RMAssertion xmlns:wsrmp="http://docs.oasis-open.org/ws-rx/wsrmp/200702">
+               <wsp:Policy/>
+            </wsrmp:RMAssertion>
+            <wsaw:UsingAddressing xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"/>
+         </wsp:All>
+         <wsp:All>
+            <sapattahnd:Enabled xmlns:sapattahnd="http://www.sap.com/710/features/attachment/">false</sapattahnd:Enabled>
+            <saptrnbnd:OptimizedMimeSerialization wsp:Optional="true" xmlns:saptrnbnd="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization"/>
+            <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy"/>
+            <wsaw:UsingAddressing xmlns:wsaw="http://schemas.xmlsoap.org/ws/2004/08/addressing"/>
+         </wsp:All>
+         <wsp:All>
+            <sapattahnd:Enabled xmlns:sapattahnd="http://www.sap.com/710/features/attachment/">false</sapattahnd:Enabled>
+            <saptrnbnd:OptimizedXMLTransfer uri="http://xml.sap.com/2006/11/esi/esp/binxml" wsp:Optional="true" xmlns:saptrnbnd="http://www.sap.com/webas/710/soap/features/transportbinding/"/>
+            <wsrmp:RMAssertion xmlns:wsrmp="http://docs.oasis-open.org/ws-rx/wsrmp/200702">
+               <wsp:Policy/>
+            </wsrmp:RMAssertion>
+            <wsaw:UsingAddressing xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"/>
+         </wsp:All>
+         <wsp:All>
+            <sapattahnd:Enabled xmlns:sapattahnd="http://www.sap.com/710/features/attachment/">false</sapattahnd:Enabled>
+            <saptrnbnd:OptimizedXMLTransfer uri="http://xml.sap.com/2006/11/esi/esp/binxml" wsp:Optional="true" xmlns:saptrnbnd="http://www.sap.com/webas/710/soap/features/transportbinding/"/>
+            <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy"/>
+            <wsaw:UsingAddressing xmlns:wsaw="http://schemas.xmlsoap.org/ws/2004/08/addressing"/>
+         </wsp:All>
+      </wsp:ExactlyOne>
+   </wsp:Policy>
+   <wsp:Policy wsu:Id="BN__ZTEST_soap12">
+      <wsp:ExactlyOne>
+         <wsp:All>
+            <sapattahnd:Enabled xmlns:sapattahnd="http://www.sap.com/710/features/attachment/">false</sapattahnd:Enabled>
+            <saptrnbnd:OptimizedMimeSerialization wsp:Optional="true" xmlns:saptrnbnd="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization"/>
+            <wsrmp:RMAssertion xmlns:wsrmp="http://docs.oasis-open.org/ws-rx/wsrmp/200702">
+               <wsp:Policy/>
+            </wsrmp:RMAssertion>
+            <wsaw:UsingAddressing xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"/>
+         </wsp:All>
+         <wsp:All>
+            <sapattahnd:Enabled xmlns:sapattahnd="http://www.sap.com/710/features/attachment/">false</sapattahnd:Enabled>
+            <saptrnbnd:OptimizedMimeSerialization wsp:Optional="true" xmlns:saptrnbnd="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization"/>
+            <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy"/>
+            <wsaw:UsingAddressing xmlns:wsaw="http://schemas.xmlsoap.org/ws/2004/08/addressing"/>
+         </wsp:All>
+         <wsp:All>
+            <sapattahnd:Enabled xmlns:sapattahnd="http://www.sap.com/710/features/attachment/">false</sapattahnd:Enabled>
+            <saptrnbnd:OptimizedXMLTransfer uri="http://xml.sap.com/2006/11/esi/esp/binxml" wsp:Optional="true" xmlns:saptrnbnd="http://www.sap.com/webas/710/soap/features/transportbinding/"/>
+            <wsrmp:RMAssertion xmlns:wsrmp="http://docs.oasis-open.org/ws-rx/wsrmp/200702">
+               <wsp:Policy/>
+            </wsrmp:RMAssertion>
+            <wsaw:UsingAddressing xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"/>
+         </wsp:All>
+         <wsp:All>
+            <sapattahnd:Enabled xmlns:sapattahnd="http://www.sap.com/710/features/attachment/">false</sapattahnd:Enabled>
+            <saptrnbnd:OptimizedXMLTransfer uri="http://xml.sap.com/2006/11/esi/esp/binxml" wsp:Optional="true" xmlns:saptrnbnd="http://www.sap.com/webas/710/soap/features/transportbinding/"/>
+            <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy"/>
+            <wsaw:UsingAddressing xmlns:wsaw="http://schemas.xmlsoap.org/ws/2004/08/addressing"/>
+         </wsp:All>
+      </wsp:ExactlyOne>
+   </wsp:Policy>
+   <wsp:Policy wsu:Id="IF__ZWS_HUBTIQ_INTEGRATION_READ">
+      <wsp:ExactlyOne>
+         <wsp:All>
+            <sapsession:Session xmlns:sapsession="http://www.sap.com/webas/630/soap/features/session/">
+               <sapsession:enableSession>false</sapsession:enableSession>
+            </sapsession:Session>
+            <sapcentraladmin:CentralAdministration wsp:Optional="true" xmlns:sapcentraladmin="http://www.sap.com/webas/700/soap/features/CentralAdministration/">
+               <sapcentraladmin:BusinessApplicationID>00505686697F1ED893EF03F62502C863</sapcentraladmin:BusinessApplicationID>
+            </sapcentraladmin:CentralAdministration>
+         </wsp:All>
+      </wsp:ExactlyOne>
+   </wsp:Policy>
+   <wsp:Policy wsu:Id="OP__ZFM_HUBTIQ_INTEGRATION_READ">
+      <wsp:ExactlyOne>
+         <wsp:All>
+            <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">yes</saptrhnw05:required>
+            <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">true</sapcomhnd:enableCommit>
+            <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">false</sapblock:enableBlocking>
+            <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">true</saprmnw05:enableWSRM>
+         </wsp:All>
+      </wsp:ExactlyOne>
+   </wsp:Policy>
+   <wsdl:types>
+      <xsd:schema attributeFormDefault="qualified" targetNamespace="urn:sap-com:document:sap:rfc:functions">
+         <xsd:simpleType name="char10">
+            <xsd:restriction base="xsd:string">
+               <xsd:maxLength value="10"/>
+            </xsd:restriction>
+         </xsd:simpleType>
+         <xsd:element name="ZFM_HUBTIQ_INTEGRATION_READ">
+            <xsd:complexType>
+               <xsd:sequence>
+                  <xsd:element name="IV_DATA_ID" type="tns:char10"/>
+               </xsd:sequence>
+            </xsd:complexType>
+         </xsd:element>
+      </xsd:schema>
+   </wsdl:types>
+   <wsdl:message name="ZFM_HUBTIQ_INTEGRATION_READ">
+      <wsdl:part name="parameters" element="tns:ZFM_HUBTIQ_INTEGRATION_READ"/>
+   </wsdl:message>
+   <wsdl:portType name="ZWS_HUBTIQ_INTEGRATION_READ">
+      <wsp:Policy>
+         <wsp:PolicyReference URI="#IF__ZWS_HUBTIQ_INTEGRATION_READ"/>
+      </wsp:Policy>
+      <wsdl:operation name="ZFM_HUBTIQ_INTEGRATION_READ">
+         <wsp:Policy>
+            <wsp:PolicyReference URI="#OP__ZFM_HUBTIQ_INTEGRATION_READ"/>
+         </wsp:Policy>
+         <wsdl:input message="tns:ZFM_HUBTIQ_INTEGRATION_READ"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding name="ZTEST" type="tns:ZWS_HUBTIQ_INTEGRATION_READ">
+      <wsp:Policy>
+         <wsp:PolicyReference URI="#BN__ZTEST"/>
+      </wsp:Policy>
+      <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+      <wsdl:operation name="ZFM_HUBTIQ_INTEGRATION_READ">
+         <soap:operation soapAction="urn:sap-com:document:sap:rfc:functions:ZWS_HUBTIQ_INTEGRATION_READ:ZFM_HUBTIQ_INTEGRATION_READRequest" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:binding name="ZTEST_soap12" type="tns:ZWS_HUBTIQ_INTEGRATION_READ">
+      <wsp:Policy>
+         <wsp:PolicyReference URI="#BN__ZTEST_soap12"/>
+      </wsp:Policy>
+      <wsoap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+      <wsdl:operation name="ZFM_HUBTIQ_INTEGRATION_READ">
+         <wsoap12:operation soapAction="urn:sap-com:document:sap:rfc:functions:ZWS_HUBTIQ_INTEGRATION_READ:ZFM_HUBTIQ_INTEGRATION_READRequest" style="document"/>
+         <wsdl:input>
+            <wsoap12:body use="literal"/>
+         </wsdl:input>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="ZTEST">
+      <wsdl:port name="ZTEST" binding="tns:ZTEST">
+         <soap:address location="http://bbwcrmcs2d.hn.tds.de:8000/sap/bc/srt/rfc/sap/zws_hubtiq_integration_read/010/ztest/ztest"/>
+      </wsdl:port>
+      <wsdl:port name="ZTEST_soap12" binding="tns:ZTEST_soap12">
+         <wsoap12:address location="http://bbwcrmcs2d.hn.tds.de:8000/sap/bc/srt/rfc/sap/zws_hubtiq_integration_read/010/ztest/ztest"/>
+      </wsdl:port>
+   </wsdl:service>
+</wsdl:definitions>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/doIt/"/><con:wsrmConfig version="1.2"/></con:call><con:call id="d0af6612-c1f0-46d8-aeaf-1464b354cdc8" name="iph_contact_lv"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://tui-wega.audi.com/WegaService/services/DoItPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.wega.audi.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:DoItdoItRequest1>
+         <version>1.0</version>
+         <application>iph3</application>
+         <process>iphcontact_s</process>
+         <languageISOId>lv</languageISOId>
+         <countryISOId>LV</countryISOId>
+         <group xmlns="">
+            <id>User</id>
+            <field>
+               <id>LastName</id>
+               <value>IPH</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>FirstName</id>
+               <value>Tester</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>Salutation</id>
+              <value>1</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>Email</id>
+               <value>gneralcontactLV@v11.co</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>PhoneGeneric</id>
+               <value>11111111</value>
+               <changed>0</changed>
+            </field>
+            <group>
+               <id>AddressHome</id>
+            </group>
+         </group>
+         <group xmlns="">
+            <id>Request</id>
+            <field>
+               <id>Message</id>
+               <value>IPH Testmessage</value>
+               <changed>0</changed>
+            </field>
+            
+         </group>
+         <group xmlns="">
+            <id>Dealer</id>
+            <field>
+               <id>DealerId</id>
+               <value>99997</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>Email</id>
+               <value>LVDealerEins@v11.co</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>DealerName</id>
+               <value>Dealername</value>
+               <changed>0</changed>
+            </field>
+         </group>
+      </ser:DoItdoItRequest1>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/doIt/"/><con:wsrmConfig version="1.2"/></con:call><con:call id="662e1b03-80c6-4f88-80c6-abb81d5630b9" name="iph_servicedate_lt"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://pre-wega.audi.com/WegaService/services/DoItPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.wega.audi.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ser:DoItdoItRequest1>\r
+         <version>1.0</version>\r
+         <application>iph3</application>\r
+         <process>iphservicedate_s</process>\r
+         <languageISOId>lt</languageISOId>\r
+         <countryISOId>LT</countryISOId>\r
+         <group>\r
+            <id>User</id>\r
+            <field>\r
+               <id>LastName</id>\r
+               <value>Test</value>\r
+               <changed>0</changed>\r
+            </field>\r
+            <field>\r
+               <id>FirstName</id>\r
+               <value>Duy</value>\r
+               <changed>0</changed>\r
+            </field>\r
+            <field>\r
+               <id>Salutation</id>\r
+               <value>1</value>\r
+               <changed>0</changed>\r
+            </field>\r
+            <field>\r
+               <id>Title</id>\r
+               <value>1</value>\r
+               <changed>0</changed>\r
+            </field>\r
+            <field>\r
+               <id>Email</id>\r
+               <value>servicedateLT@v11.co</value>\r
+               <changed>0</changed>\r
+            </field>\r
+            <field>\r
+               <id>PhoneGeneric</id>\r
+               <value>1111111</value>\r
+               <changed>0</changed>\r
+            </field>\r
+            <field>\r
+               <id>StatusDate</id>\r
+               <value></value>\r
+               <changed>0</changed>\r
+            </field>\r
+            <field>\r
+               <id>CreationDate</id>\r
+               <value></value>\r
+               <changed>0</changed>\r
+            </field>\r
+            <group>\r
+               <id>AddressHome</id>\r
+               <field>\r
+                  <id>CountryIsoId</id>\r
+                  <value>LT</value>\r
+                  <changed>0</changed>\r
+               </field>\r
+            </group>\r
+         </group>\r
+         <group>\r
+            <id>Request</id>\r
+            <field>\r
+               <id>Message</id>\r
+               <value>Testnachricht</value>
+               <changed>0</changed>\r
+            </field>\r
+         </group>\r
+         <group>\r
+            <id>QualificationData</id>\r
+            <field>\r
+               <id>Test</id>\r
+               <value></value>\r
+               <changed>0</changed>\r
+            </field>\r
+            <field>\r
+               <id>CustomerInterest1</id>\r
+               <value></value>\r
+               <changed>0</changed>\r
+            </field>\r
+            <field>\r
+               <id>LeadId</id>\r
+               <value></value>\r
+               <changed>0</changed>\r
+            </field>\r
+            <group>\r
+               <id>CurrentVehicle</id>\r
+               <field>\r
+                  <id>Vendor</id>\r
+                  <value>9999</value>\r
+                  <changed>0</changed>\r
+               </field>\r
+               <field>\r
+                  <id>Model</id>\r
+                  <value>AAAD</value>\r
+                  <changed>0</changed>\r
+               </field>\r
+            </group>\r
+         </group>\r
+         <group>\r
+            <id>Vehicle</id>\r
+            <field>\r
+               <id>LicensePlate</id>\r
+               <value>A-XX 123</value>\r
+               <changed>0</changed>\r
+            </field>\r
+            <field>\r
+               <id>VIN</id>\r
+               <value>WAUZZZ8V5EA025011</value>\r
+               <changed>0</changed>\r
+            </field>\r
+         </group>\r
+         <group>\r
+            <id>Dealer</id>\r
+            <field>\r
+               <id>DealerId</id>\r
+               <value>99997</value>\r
+               <changed>0</changed>\r
+            </field>\r
+            <field>\r
+               <id>DealerName</id>\r
+               <value>HansWurst</value>\r
+               <changed>0</changed>\r
+            </field>\r
+            <field>\r
+               <id>Email</id>\r
+               <value>LTDealerEins@v11.co</value>\r
+               <changed>0</changed>\r
+            </field>\r
+         </group>\r
+      </ser:DoItdoItRequest1>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/doIt/"/><con:wsrmConfig version="1.2"/></con:call><con:call id="f0b15c32-7271-4e25-8ba3-3b16f3f45314" name="iph_servicedate_lv"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://pre-wega.audi.com/WegaService/services/DoItPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.wega.audi.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:DoItdoItRequest1>
+         <version>1.0</version>
+         <application>iph3</application>
+         <process>iphserviceperson_s</process>
+         <languageISOId>lv</languageISOId>
+         <countryISOId>LV</countryISOId>
+                  <group xmlns="">
+            <id>User</id>
+            <field>
+               <id>LastName</id>
+               <value>Duy</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>FirstName</id>
+               <value>Dang</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>Salutation</id>
+               <value>1</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>Email</id>
+               <value>servicedateLV@v11.co</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>PhoneGeneric</id>
+               <value>11111</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>StatusDate</id>
+               <value></value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>CreationDate</id>
+               <value></value>
+               <changed>0</changed>
+            </field>
+            <group>
+               <id>AddressHome</id>
+               <field>
+                 <id>CountryIsoId</id>
+               <value>LV</value>
+               <changed>0</changed>
+               </field>
+            </group>
+         </group>
+         <group xmlns="">
+            <id>Request</id>
+            <field>
+               <id>Message</id>
+               <value>Testnachricht</value>
+               <changed>0</changed>
+            </field>
+         </group>
+         <group xmlns="">
+            <id>QualificationData</id>
+            <field>
+               <id>Test</id>
+               <value></value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>CustomerInterest1</id>
+             <value></value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>LeadId</id>
+              <value></value>
+               <changed>0</changed>
+            </field>
+            <group>
+               <id>CurrentVehicle</id>
+               <field>
+                  <id>Vendor</id>
+                  <value>9999</value>
+               <changed>0</changed>
+               </field>
+               <field>
+                  <id>Model</id>
+                  <value>AAAD</value>
+               <changed>0</changed>
+               </field>
+            </group>
+         </group>
+         <group xmlns="">
+            <id>Vehicle</id>
+            <field>
+               <id>LicensePlate</id>
+               <value>A-XX 123</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>VIN</id>
+               <value></value>
+               <changed>0</changed>
+            </field>
+         </group>
+        
+         <group xmlns="">
+            <id>Dealer</id>
+            <field>
+               <id>DealerId</id>
+               <value>99997</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>DealerName</id>
+               <value>testdealer</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>Email</id>
+               <value>LVDealerEins@v11.co</value>
+               <changed>0</changed>
+            </field>
+         </group>
+      </ser:DoItdoItRequest1>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/doIt/"/><con:wsrmConfig version="1.2"/></con:call><con:call id="c3e051d9-a2ae-4750-89f5-b247a71efcd1" name="iph_serviceperson_de"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://pre-wega.audi.com/WegaService/services/DoItPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.wega.audi.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:DoItdoItRequest1>
+         <version>1.0</version>
+         <application>iph3</application>
+         <process>iphserviceperson_s</process>
+         <languageISOId>de</languageISOId>
+         <countryISOId>DE</countryISOId>
+         <group xmlns="">
+            <id>User</id>
+            <field>
+               <id>LastName</id>
+               <value>Test</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>FirstName</id>
+              <value>Lo</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>Salutation</id>
+               <value>1</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>Title</id>
+               <value>1</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>Email</id>
+               <value>pre_test_de@v11.co</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>PhoneGeneric</id>
+               <value>11111</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>StatusDate</id>
+               <value></value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>CreationDate</id>
+               <value></value>
+               <changed>0</changed>
+            </field>
+            <group>
+               <id>AddressHome</id>
+               <field>
+                 <id>CountryIsoId</id>
+                 <value>DE</value>
+               <changed>0</changed>
+               </field>
+            </group>
+         </group>
+         <group xmlns="">
+            <id>Request</id>
+            <field>
+               <id>Message</id>
+               <value>Testnachricht</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>Category</id>
+               <value></value>
+               <changed>0</changed>
+            </field>
+         </group>
+         <group xmlns="">
+            <id>QualificationData</id>
+            <field>
+               <id>Test</id>
+               <value></value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>CustomerInterest1</id>
+               <value>10</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>LeadId</id>
+               <value></value>
+               <changed>0</changed>
+            </field>
+            <group>
+               <id>CurrentVehicle</id>
+               <field>
+                  <id>Vendor</id>
+                 <value>AA</value>
+               <changed>0</changed>
+               </field>
+               <field>
+                  <id>Model</id>
+                 <value>AADD</value>
+               <changed>0</changed>
+               </field>
+            </group>
+         </group>
+         <group xmlns="">
+            <id>Vehicle</id>
+            <field>
+               <id>LicensePlate</id>
+               <value>A-XX-1245</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>VIN</id>
+               <value>WAUZZZ8V5EA025011</value>
+               <changed>0</changed>
+            </field>
+         </group>
+         
+         <group xmlns="">
+            <id>Dealer</id>
+            <field>
+               <id>DealerId</id>
+               <value></value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>DealerName</id>
+               <value>Autohaus Max und Moritz</value>
+               <changed>0</changed>
+            </field>
+         </group>
+      </ser:DoItdoItRequest1>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/doIt/"/><con:wsrmConfig version="1.2"/></con:call><con:call id="20ac2bc1-090f-4790-a1ca-cada861430bb" name="iph_serviceperson_lt"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://tui-wega.audi.com/WegaService/services/DoItPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.wega.audi.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:DoItdoItRequest1>
+         <version>1.0</version>
+         <application>iph3</application>
+         <process>iphserviceperson_s</process>
+         <languageISOId>lt</languageISOId>
+         <countryISOId>LT</countryISOId>
+          <group xmlns="">
+            <id>User</id>
+            <field>
+               <id>LastName</id>
+               <value>Test</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>FirstName</id>
+               <value>Duy</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>Salutation</id>
+               <value>1</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>Title</id>
+               <value>1</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>Email</id>
+               <value>test1@v11.co</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>PhoneGeneric</id>
+               <value>111111</value>
+               <changed>0</changed>
+            </field>
+            <group>
+               <id>AddressHome</id>
+               <field>
+                  <id>CountryIsoId</id>
+                  <value>LT</value>
+               <changed>0</changed>
+               </field>
+            </group>
+         </group>
+        
+         <group xmlns="">
+            <id>Request</id>
+            <field>
+               <id>Message</id>
+               <value>Testnachricht</value>
+               <changed>0</changed>
+            </field>
+         </group>
+         <group xmlns="">
+            <id>QualificationData</id>
+             <field>
+               <id>CustomerInterest1</id>
+               <value>10</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>LeadId</id>
+               <value></value>
+               <changed>0</changed>
+            </field>
+            <group>
+               <id>CurrentVehicle</id>
+               <field>
+                  <id>Vendor</id>
+                  <value>AA</value>
+               <changed>0</changed>
+               </field>
+               <field>
+                  <id>Model</id>
+                  <value>AAAD</value>
+               <changed>0</changed>
+               </field>
+            </group>
+         </group>
+         <group xmlns="">
+            <id>Vehicle</id>
+            <field>
+               <id>LicensePlate</id>
+               <value>A-XX-1234</value>
+               <changed>0</changed>
+            </field>
+           
+         </group>
+         <group xmlns="">
+            <id>Dealer</id>
+            <field>
+               <id>DealerId</id>
+               <value>99997</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>Email</id>
+               <value>dealermail@v11.co</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>DealerName</id>
+               <value>Testdealer</value>
+               <changed>0</changed>
+            </field>
+         </group>
+      </ser:DoItdoItRequest1>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/doIt/"/><con:wsrmConfig version="1.2"/></con:call><con:call id="d9472b95-98ba-432e-94bf-cb73c87aa6df" name="iph_serviceperson_lv"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://tui-wega.audi.com/WegaService/services/DoItPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.wega.audi.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:DoItdoItRequest1>
+         <version>1.0</version>
+         <application>iph3</application>
+         <process>iphserviceperson_s</process>
+         <languageISOId>lv</languageISOId>
+         <countryISOId>LV</countryISOId>
+          <group xmlns="">
+            <id>User</id>
+            <field>
+               <id>LastName</id>
+               <value>Test</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>FirstName</id>
+               <value>Duy</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>Salutation</id>
+               <value>1</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>Email</id>
+               <value>testlv@v11.co</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>PhoneGeneric</id>
+               <value>1111111</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>StatusDate</id>
+               <value></value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>CreationDate</id>
+               <value></value>
+               <changed>0</changed>
+            </field>
+            <group>
+               <id>AddressHome</id>
+               <field>
+                  <id>CountryIsoId</id>
+                  <value>LV</value>
+               <changed>0</changed>
+               </field>
+            </group>
+         </group>
+        
+         <group xmlns="">
+            <id>Request</id>
+            <field>
+               <id>Message</id>
+               <value>Testmessage</value>
+               <changed>0</changed>
+            </field>
+         </group>
+         <group xmlns="">
+            <id>QualificationData</id>
+            <field>
+               <id>Test</id>
+               <value></value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>CustomerInterest1</id>
+               <value></value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>LeadId</id>
+               <value></value>
+               <changed>0</changed>
+            </field>
+            <group>
+               <id>CurrentVehicle</id>
+               <field>
+                  <id>Vendor</id>
+                  <value>AA</value>
+               <changed>0</changed>
+               </field>
+               <field>
+                  <id>Model</id>
+                  <value>AAAD</value>
+               <changed>0</changed>
+               </field>
+            </group>
+         </group>
+         <group xmlns="">
+            <id>Vehicle</id>
+            <field>
+               <id>LicensePlate</id>
+               <value>A-XX 1234</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>VIN</id>
+               <value></value>
+               <changed>0</changed>
+            </field>
+         </group>
+        
+         <group xmlns="">
+            <id>Dealer</id>
+            <field>
+               <id>DealerId</id>
+               <value>99997</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>DealerName</id>
+               <value>Testdealer</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>Email</id>
+               <value>dealertestlv@v11.co</value>
+               <changed>0</changed>
+            </field>
+         </group>
+      </ser:DoItdoItRequest1>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/doIt/"/><con:wsrmConfig version="1.2"/></con:call><con:call id="d830bd3a-e2d7-4b4c-995d-ee5b4a683c04" name="iph_testdrive_lv"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://tui-wega.audi.com/WegaService/services/DoItPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.wega.audi.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:DoItdoItRequest1>
+         <version>1.0</version>
+         <application>iph3</application>
+         <process>iphtestdrive_s</process>
+         <languageISOId>lv</languageISOId>
+         <countryISOId>LV</countryISOId>
+                 <group xmlns="">
+            <id>Vehicle</id>
+            <field>
+               <id>ModelDerivateId</id>
+               <value>a1</value>
+               <changed>0</changed>
+            </field>
+         </group>
+         <group xmlns="">
+            <id>User</id>
+            <field>
+               <id>LastName</id>
+               <value>Test</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>FirstName</id>
+               <value>Duy</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>Salutation</id>
+               <value>1</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>Title</id>
+               <value>1</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>Email</id>
+              <value>test1@v11.co</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>PhoneGeneric</id>
+               <value>111111</value>
+               <changed>0</changed>
+            </field>
+            <group>
+               <id>AddressHome</id>
+               <field>
+                  <id>CareOf</id>
+                 <value></value>
+               <changed>0</changed>
+               </field>
+               <field>
+                  <id>Street</id>
+                  <value>avbsdcs</value>
+               <changed>0</changed>
+               </field>
+               <field>
+                  <id>HouseNumber</id>
+                  <value>12</value>
+               <changed>0</changed>
+               </field>
+               <field>
+                  <id>Zip</id>
+                  <value>12312</value>
+               <changed>0</changed>
+               </field>
+               <field>
+                  <id>City</id>
+                 <value>Cityyy</value>
+               <changed>0</changed>
+               </field>
+               <field>
+                  <id>CountryIsoId</id>
+                  <value>LV</value>
+               <changed>0</changed>
+               </field>
+            </group>
+         </group>
+       
+         <group xmlns="">
+            <id>Dealer</id>
+            <field>
+               <id>DealerId</id>
+               <value>99997</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>DealerName</id>
+              <value>hans</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>Email</id>
+               <value>test2@v11.co</value>
+               <changed>0</changed>
+            </field>
+         </group>
+       
+      </ser:DoItdoItRequest1>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/doIt/"/><con:wsrmConfig version="1.2"/></con:call><con:call id="a7cf1661-671e-4e81-8dd6-74880168a5e0" name="iph_testdrive_lt"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://pre-wega.audi.com/WegaService/services/DoItPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.wega.audi.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:DoItdoItRequest1>
+         <version>1.0</version>
+         <application>iph3</application>
+         <process>iphtestdrive_s</process>
+         <languageISOId>de</languageISOId>
+         <countryISOId>DE</countryISOId>
+         <group xmlns="">
+            <id>Vehicle</id>
+            <field>
+               <id>ModelDerivateId</id>
+               <value>a7</value>
+            </field>
+         </group>
+         <group xmlns="">
+            <id>User</id>
+            <field>
+               <id>LastName</id>
+               <value>Duy</value>
+            </field>
+            <field>
+               <id>FirstName</id>
+              <value>Lo</value>
+            </field>
+            <field>
+               <id>Salutation</id>
+               <value>1</value>
+            </field>
+            <field>
+               <id>Title</id>
+              <value></value>
+            </field>
+            <field>
+               <id>Email</id>
+               <value>lo@v11.co</value>
+            </field>
+            <field>
+               <id>PhoneGeneric</id>
+               <value>8127938172</value>
+            </field>
+            <field>
+               <id>DataUseAgreementEmail</id>
+               <value>true</value>
+            </field>
+            <field>
+               <id>DataUseAgreementPostal</id>
+               <value>true</value>
+            </field>
+            <field>
+               <id>DataUseAgreementEmail</id>
+              <value>true</value>
+            </field>
+            <group>
+               <id>AddressHome</id>
+               <field>
+                  <id>CareOf</id>
+                 <value></value>
+               </field>
+               <field>
+                  <id>Street</id>
+                 <value>Streeet</value>
+               </field>
+               <field>
+                  <id>HouseNumber</id>
+                 <value>7a</value>
+               </field>
+               <field>
+                  <id>Zip</id>
+                 <value>12777</value>
+               </field>
+               <field>
+                  <id>City</id>
+                 <value>City</value>
+               </field>
+               <field>
+                  <id>CountryIsoId</id>
+                 <value>DE</value>
+               </field>
+            </group>
+         </group>
+       
+         <group xmlns="">
+            <id>Request</id>
+            <field>
+               <id>Category</id>
+               <value></value>
+            </field>
+            <field>
+               <id>Leadsource</id>
+               <value></value>
+            </field>
+         </group>
+         <group xmlns="">
+            <id>Dealer</id>
+            <field>
+               <id>DealerId</id>
+               <value>99997</value>
+            </field>
+            <field>
+               <id>DealerName</id>
+               <value>Testhaendler</value>
+            </field>
+         </group>
+      </ser:DoItdoItRequest1>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/doIt/"/><con:wsrmConfig version="1.2"/></con:call><con:call id="1e029927-e4c2-4e45-a8d0-f2159432e2ec" name="iph_salesperson_lv"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://pre-wega.audi.com/WegaService/services/DoItPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.wega.audi.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ser:DoItdoItRequest1>\r
+         <version>1.0</version>\r
+         <application>iph3</application>\r
+         <process>iphsalesperson_s</process>\r
+         <languageISOId>lv</languageISOId>\r
+         <countryISOId>LV</countryISOId>\r
+         <group>\r
+            <id>Vehicle</id>\r
+            <field>\r
+               <id>ModelDerivateId</id>\r
+               <value>a1</value>\r
+               <changed>0</changed>\r
+            </field>\r
+         </group>\r
+         <group>\r
+            <id>User</id>\r
+            <field>\r
+               <id>LastName</id>\r
+               <value>Duy</value>\r
+               <changed>0</changed>\r
+            </field>\r
+            <field>\r
+               <id>FirstName</id>\r
+               <value>Lo</value>\r
+               <changed>0</changed>\r
+            </field>\r
+            <field>\r
+               <id>Salutation</id>\r
+               <value>1</value>\r
+               <changed>0</changed>\r
+            </field>\r
+            <field>\r
+               <id>Email</id>\r
+               <value>salespersonLV@v11.co</value>\r
+               <changed>0</changed>\r
+            </field>\r
+            <field>\r
+               <id>PhoneGeneric</id>\r
+               <value>111111</value>\r
+               <changed>0</changed>\r
+            </field>\r
+            <group>\r
+               <id>AddressHome</id>\r
+               <field>\r
+                  <id>CareOf</id>\r
+                  <value>test</value>\r
+                  <changed>0</changed>\r
+               </field>\r
+               <field>\r
+                  <id>Street</id>\r
+                  <value>Milchstr.</value>\r
+                  <changed>0</changed>\r
+               </field>\r
+               <field>\r
+                  <id>HouseNumber</id>\r
+                  <value>1</value>\r
+                  <changed>0</changed>\r
+               </field>\r
+               <field>\r
+                  <id>Zip</id>\r
+                  <value>22222</value>\r
+                  <changed>0</changed>\r
+               </field>\r
+               <field>\r
+                  <id>City</id>\r
+                  <value>Augsburg</value>\r
+                  <changed>0</changed>\r
+               </field>\r
+               <field>\r
+                  <id>CountryIsoId</id>\r
+                  <value>LV</value>\r
+                  <changed>0</changed>\r
+               </field>\r
+            </group>\r
+         </group>\r
+         <group>\r
+            <id>Request</id>\r
+            <field>\r
+               <id>Message</id>\r
+               <value>testnachricht</value>\r
+               <changed>0</changed>\r
+            </field>\r
+         </group>\r
+         <group>\r
+            <id>Dealer</id>\r
+            <field>\r
+               <id>DealerId</id>\r
+               <value>99997</value>\r
+               <changed>0</changed>\r
+            </field>\r
+            <field>\r
+               <id>DealerName</id>\r
+               <value>Testdealer</value>\r
+               <changed>0</changed>\r
+            </field>\r
+            <field>\r
+               <id>Email</id>\r
+               <value>LVDealerEins@v11.co</value>\r
+               <changed>0</changed>\r
+            </field>\r
+         </group>\r
+      </ser:DoItdoItRequest1>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/doIt/"/><con:wsrmConfig version="1.2"/></con:call><con:call id="72a25cbd-b7ed-4028-aadb-87cdda1891bb" name="iph_salesperson_lt"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://pre-wega.audi.com/WegaService/services/DoItPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.wega.audi.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:DoItdoItRequest1>
+         <version>1.0</version>
+         <application>iph3</application>
+         <process>iphsalesperson_s</process>
+         <languageISOId>lt</languageISOId>
+         <countryISOId>LT</countryISOId>
+                 <group xmlns="">
+            <id>Vehicle</id>
+            <field>
+               <id>ModelDerivateId</id>
+               <value>a1</value>
+               <changed>0</changed>
+            </field>
+         </group>
+         <group xmlns="">
+            <id>User</id>
+            <field>
+               <id>LastName</id>
+               <value>Test</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>FirstName</id>
+               <value>Duy</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>Salutation</id>
+               <value>1</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>Title</id>
+               <value>1</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>Email</id>
+              <value>salespersonLT@v11.co</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>PhoneGeneric</id>
+               <value>111111</value>
+               <changed>0</changed>
+            </field>
+            <group>
+               <id>AddressHome</id>
+               <field>
+                  <id>CareOf</id>
+                 <value></value>
+               <changed>0</changed>
+               </field>
+               <field>
+                  <id>Street</id>
+                  <value>avbsdcs</value>
+               <changed>0</changed>
+               </field>
+               <field>
+                  <id>HouseNumber</id>
+                  <value>12</value>
+               <changed>0</changed>
+               </field>
+               <field>
+                  <id>Zip</id>
+                  <value>12312</value>
+               <changed>0</changed>
+               </field>
+               <field>
+                  <id>City</id>
+                 <value>Cityyy</value>
+               <changed>0</changed>
+               </field>
+               <field>
+                  <id>CountryIsoId</id>
+                  <value>LT</value>
+               <changed>0</changed>
+               </field>
+            </group>
+         </group>
+       
+         <group xmlns="">
+            <id>Dealer</id>
+            <field>
+               <id>DealerId</id>
+               <value>99997</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>DealerName</id>
+              <value>hans</value>
+               <changed>0</changed>
+            </field>
+            <field>
+               <id>Email</id>
+               <value>LTDealerEins@v11.co</value>
+               <changed>0</changed>
+            </field>
+         </group>
+       
+      </ser:DoItdoItRequest1>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/doIt/"/><con:wsrmConfig version="1.2"/></con:call><con:call id="e6370171-5b6d-4099-951d-7caa8cd60230" name="iph_serviceperson_ie"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://pre-wega.audi.com/WegaService/services/DoItPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.wega.audi.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:DoItdoItRequest1>
+         <version>1.0</version>
+         <application>iph3</application>
+         <process>iphserviceperson_s</process>
+         <languageISOId>en</languageISOId>
+         <countryISOId>IE</countryISOId>
+         <group xmlns="">
+            <id>User</id>
+            <field>
+               <id>Salutation</id>
+               <value>1</value>
+            </field>
+            <field>
+               <id>FirstName</id>
+               <value>FirstName</value>
+            </field>
+            <field>
+               <id>LastName</id>
+               <value>LastName</value>
+            </field>
+            <field>
+               <id>Email</id>
+               <value>Test@v11.co</value>
+            </field>
+            <field>
+               <id>PhoneMobile</id>
+               <value>01928391</value>
+            </field>
+            <field>
+               <id>DataUseAgreementEmail</id>
+               <value>true</value>
+            </field>
+            <field>
+               <id>DataUseAgreementPhone</id>
+               <value></value>
+            </field>
+            <field>
+               <id>DataUseAgreementPostal</id>
+               <value>true</value>
+            </field>
+            <field>
+               <id>StatusDate</id>
+               <value></value>
+            </field>
+            <field>
+               <id>CreationDate</id>
+               <value></value>
+            </field>
+            <group>
+               <id>AddressHome</id>
+               <field>
+                  <id>CountryIsoId</id>
+                  <value>IE</value>
+               </field>
+            </group>
+         </group>
+         <group xmlns="">
+            <id>Request</id>
+            <field>
+               <id>Message</id>
+              <value>Test MEssage</value>
+            </field>
+            <field>
+               <id>Category</id>
+              <value></value>
+            </field>
+         </group>
+         <group xmlns="">
+            <id>QualificationData</id>
+            <field>
+               <id>Test</id>
+              <value></value>
+            </field>
+            <field>
+               <id>CustomerInterest1</id>
+               <value></value>
+            </field>
+            <field>
+               <id>LeadId</id>
+               <value>99997</value>
+            </field>
+            <field>
+               <id>Asldb</id>
+             <value></value>
+            </field>
+            <group>
+               <id>CurrentVehicle</id>
+               <field>
+                  <id>Vendor</id>
+                 <value>AA</value>
+               </field>
+               <field>
+                  <id>Model</id>
+                  <value>a1</value>
+               </field>
+            </group>
+         </group>
+         <group xmlns="">
+            <id>Vehicle</id>
+            <field>
+               <id>LicensePlate</id>
+               <value></value>
+            </field>
+            <field>
+              <id>VIN</id>
+              <value></value>
+            </field>
+         </group>
+         <group xmlns="">
+            <id>Dealer</id>
+            <field>
+               <id>DealerId</id>
+              <value></value>
+            </field>
+            <field>
+               <id>DealerName</id>
+              <value></value>
+            </field>
+            <field>
+               <id>Email</id>
+               <value></value>
+            </field>
+         </group>
+      </ser:DoItdoItRequest1>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/doIt/"/><con:wsrmConfig version="1.2"/></con:call><con:call id="c365f8d3-8d52-4f13-b39a-1bff32c21496" name="iph_testdrive_de"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://pre-wega.audi.com/WegaService/services/DoItPort</con:endpoint><con:request><![CDATA[         <group xmlns="">
+            <id>Vehicle</id>
+            <field>
+               <id>ModelDerivateId</id>
+               <value>a7</value>
+            </field>
+         </group>
+         <group xmlns="">
+            <id>User</id>
+            <field>
+               <id>LastName</id>
+               <value>a7</value>
+            </field>
+            <field>
+               <id>FirstName</id>
+              <value>a7</value>
+            </field>
+            <field>
+               <id>Salutation</id>
+               <value>a7</value>
+            </field>
+            <field>
+               <id>Title</id>
+              <value>a7</value>
+            </field>
+            <field>
+               <id>Email</id>
+               <value>a7</value>
+            </field>
+            <field>
+               <id>PhoneGeneric</id>
+               <value>a7</value>
+            </field>
+            <field>
+               <id>DataUseAgreementEmail</id>
+               <value>a7</value>
+            </field>
+            <field>
+               <id>DataUseAgreementPostal</id>
+               <value>a7</value>
+            </field>
+            <field>
+               <id>DataUseAgreementEmail</id>
+              <value>a7</value>
+            </field>
+            <group>
+               <id>AddressHome</id>
+               <field>
+                  <id>CareOf</id>
+                 <value>a7</value>
+               </field>
+               <field>
+                  <id>Street</id>
+                 <value>a7</value>
+               </field>
+               <field>
+                  <id>HouseNumber</id>
+                 <value>a7</value>
+               </field>
+               <field>
+                  <id>Zip</id>
+                 <value>a7</value>
+               </field>
+               <field>
+                  <id>City</id>
+                 <value>a7</value>
+               </field>
+               <field>
+                  <id>CountryIsoId</id>
+                 <value>a7</value>
+               </field>
+            </group>
+         </group>
+       
+         <group xmlns="">
+            <id>Request</id>
+            <field>
+               <id>Category</id>
+               <value>WEB</value>
+            </field>
+            <field>
+               <id>Leadsource</id>
+               <value>a7</value>
+            </field>
+         </group>
+         <group xmlns="">
+            <id>Dealer</id>
+            <field>
+               <id>DealerId</id>
+               <value>99997</value>
+            </field>
+            <field>
+               <id>DealerName</id>
+               <value>Testhaendler</value>
+            </field>
+         </group>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/doIt/"/><con:wsrmConfig version="1.2"/></con:call><con:call id="6236398b-e53f-4bb3-9109-3e3428424195" name="IPH_SERVICEPERSON_DSGVO"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://wega.audi.com/WegaService/services/DoItPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.wega.audi.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:DoItdoItRequest1>
+         <version>1.0</version>
+      <application>iph3</application>
+      <process>iphserviceperson_s_dsgvo</process>
+      <languageISOId>de</languageISOId>
+      <countryISOId>DE</countryISOId>
+      <group>
+        <id>User</id>
+        <field>
+          <id>LastName</id>
+          <value>Copytext</value>
+        </field>
+        <field>
+          <id>FirstName</id>
+          <value>Copytext</value>
+        </field>
+        <field>
+          <id>Salutation</id>
+          <value>1</value>
+        </field>
+        <group>
+          <id>AddressHome</id>
+          <field>
+            <id>CountryIsoId</id>
+            <value>DE</value>
+          </field>
+        </group>
+      </group>
+      <group>
+        <id>Request</id>
+        
+        
+      </group>
+      <group>
+        <id>Vehicle</id>
+        <field>
+          <id>LicensePlate</id>
+          <value>A-BC-1234</value>
+        </field>
+      </group>
+      <group>
+        <id>QualificationData</id>
+        <field>
+          <id>Asldb</id>
+          <value>1</value>
+        </field>
+        <field>
+          <id>CustomerInterest1</id>
+          <value>10</value>
+        </field>
+        </group>
+         <group>
+        <id>Dealer</id>
+        <field>
+          <id>DealerId</id>
+          <value>99997</value>
+        </field>
+        
+        </group>
+      </ser:DoItdoItRequest1>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/doIt/"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="8ebb4559-e818-40a0-ad77-fc14b7069e78" wsaVersion="NONE" name="GetFormatBinding" type="wsdl" bindingName="{http://service.wega.audi.com/WegaService/}GetFormatBinding" soapVersion="1_1" anonymous="optional" definition="https://tui-wega.audi.com/WegaService/services/GetFormatPort?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="https://tui-wega.audi.com/WegaService/services/GetFormatPort?wsdl"><con:part><con:url>https://tui-wega.audi.com/WegaService/services/GetFormatPort?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="WegaService" targetNamespace="http://service.wega.audi.com/WegaService/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://service.wega.audi.com/WegaService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl_1="http://service.wega.audi.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>The WEGA service is the web service for centralized validating, storing, and exporting data from web applications. 
+It provides 4 service ports: GetDataPort, ValidateDataPort, SaveDataPort, and ExportDataPort. The GetDataPort 
+returns the meta data as well as the persistant data back to the web application. The ValidateDataPort provides 
+different validation mechanisms depending on the calling application. The SaveDataPort is used for storing data into 
+the database, in the initial version of the web service the user profile can be stored. The ExportDataPort is used to
+ transfer data from the web applications to external legacy systems, like the SAP CRM system KuBa. The web service
+contains an internal workflow engine, which manages the validation and the export. The calling web application needs
+not to know which validations and exports will be performed.</wsdl:documentation>
+  <wsdl:import location="../wsdl/com/audi/wega/service/service.wsdl" namespace="http://service.wega.audi.com/"/>
+  <wsdl:binding name="ExportDataBinding" type="wsdl_1:ExportData">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="exportData">
+      <soap:operation soapAction="http://service.wega.audi.com/WegaService/exportData/"/>
+      <wsdl:input>
+        <soap:body parts="wegaRequest" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="wegaResponse" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="exportDataFault">
+        <soap:fault name="exportDataFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SaveDataBinding" type="wsdl_1:SaveData">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="saveData">
+      <soap:operation soapAction="http://service.wega.audi.com/WegaService/saveData/"/>
+      <wsdl:input>
+        <soap:body parts="wegaRequest" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="wegaResponse" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="saveDataFault">
+        <soap:fault name="saveDataFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ValidateDataBinding" type="wsdl_1:ValidateData">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="validateData">
+      <soap:operation soapAction="http://service.wega.audi.com/WegaService/validateData/"/>
+      <wsdl:input>
+        <soap:body parts="wegaRequest" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="wegaResponse" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="validateDataFault">
+        <soap:fault name="validateDataFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GetDataBinding" type="wsdl_1:GetData">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getData">
+      <soap:operation soapAction="http://service.wega.audi.com/WegaService/getData/"/>
+      <wsdl:input>
+        <soap:body parts="wegaRequest" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="wegaResponse" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getDataFault">
+        <soap:fault name="getDataFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GetFormatBinding" type="wsdl_1:GetFormat">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getFormat">
+      <soap:operation soapAction="http://service.wega.audi.com/WegaService/getFormat/"/>
+      <wsdl:input>
+        <soap:body parts="wegaRequest" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="wegaResponse" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getFormatFault">
+        <soap:fault name="getFormatFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DoItBinding" type="wsdl_1:DoIt">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="doIt">
+      <soap:operation soapAction="http://service.wega.audi.com/WegaService/doIt/"/>
+      <wsdl:input>
+        <soap:body parts="wegaRequest" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="wegaResponse" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="doItFault">
+        <soap:fault name="doItFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wega">
+    <wsdl:port binding="tns:ExportDataBinding" name="ExportDataPort">
+      <soap:address location="http://tui-wega.audi.com/WegaService/services/ExportDataPort"/>
+    </wsdl:port>
+    <wsdl:port binding="tns:SaveDataBinding" name="SaveDataPort">
+      <soap:address location="http://tui-wega.audi.com/WegaService/services/SaveDataPort"/>
+    </wsdl:port>
+    <wsdl:port binding="tns:ValidateDataBinding" name="ValidateDataPort">
+      <soap:address location="http://tui-wega.audi.com/WegaService/services/ValidateDataPort"/>
+    </wsdl:port>
+    <wsdl:port binding="tns:GetDataBinding" name="GetDataPort">
+      <soap:address location="http://tui-wega.audi.com/WegaService/services/GetDataPort"/>
+    </wsdl:port>
+    <wsdl:port binding="tns:GetFormatBinding" name="GetFormatPort">
+      <soap:address location="http://tui-wega.audi.com/WegaService/services/GetFormatPort"/>
+    </wsdl:port>
+    <wsdl:port binding="tns:DoItBinding" name="DoItPort">
+      <soap:address location="http://tui-wega.audi.com/WegaService/services/DoItPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>https://tui-wega.audi.com/WegaService/wsdl/com/audi/wega/service/service.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="service" targetNamespace="http://service.wega.audi.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://service.wega.audi.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://service.wega.audi.com/" xmlns:xsd_1="http://data.service.wega.audi.com/" xmlns:xsd_2="http://exception.service.wega.audi.com/" xmlns:xsd_3="http://dataformat.service.wega.audi.com/">
+      <xsd:import namespace="http://dataformat.service.wega.audi.com/" schemaLocation="dataformat/dataformat.xsd"/>
+      <xsd:import namespace="http://exception.service.wega.audi.com/" schemaLocation="exception/exception.xsd"/>
+      <xsd:import namespace="http://data.service.wega.audi.com/" schemaLocation="data/data.xsd"/>
+      <xsd:element name="ExportDataexportDataRequest1" type="xsd_1:WegaData"/>
+      <xsd:element name="ExportDataexportDataResponse1" type="xsd_1:WegaData"/>
+      <xsd:element name="ExportDataexportDataFault1" type="xsd_2:WegaException"/>
+      <xsd:element name="SaveDatasaveDataRequest1" type="xsd_1:WegaData"/>
+      <xsd:element name="SaveDatasaveDataResponse1" type="xsd_1:WegaData"/>
+      <xsd:element name="SaveDatasaveDataFault1" type="xsd_2:WegaException"/>
+      <xsd:element name="ValidateDatavalidateDataRequest1" type="xsd_1:WegaData"/>
+      <xsd:element name="ValidateDatavalidateDataResponse1" type="xsd_1:WegaData"/>
+      <xsd:element name="ValidateDatavalidateDataFault1" type="xsd_2:WegaException"/>
+      <xsd:element name="GetDatagetDataRequest1" type="xsd_1:WegaData"/>
+      <xsd:element name="GetDatagetDataResponse1" type="xsd_1:WegaData"/>
+      <xsd:element name="GetDatagetDataFault1" type="xsd_2:WegaException"/>
+      <xsd:element name="GetFormatgetFormatRequest1" type="xsd_1:WegaData"/>
+      <xsd:element name="GetFormatgetFormatResponse1" type="xsd_3:WegaFormat"/>
+      <xsd:element name="GetFormatgetFormatFault1" type="xsd_2:WegaException"/>
+      <xsd:element name="DoItdoItRequest1" type="xsd_1:WegaData"/>
+      <xsd:element name="DoItdoItFault1" type="xsd_2:WegaException"/>
+      <xsd:element name="DoItdoItResponse1" type="xsd_1:WegaData"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ExportDataexportDataRequest">
+    <wsdl:part element="tns:ExportDataexportDataRequest1" name="wegaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ExportDataexportDataResponse">
+    <wsdl:part element="tns:ExportDataexportDataResponse1" name="wegaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ExportDataexportDataFault">
+    <wsdl:part element="tns:ExportDataexportDataFault1" name="wegaException"/>
+  </wsdl:message>
+  <wsdl:message name="SaveDatasaveDataRequest">
+    <wsdl:part element="tns:SaveDatasaveDataRequest1" name="wegaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="SaveDatasaveDataResponse">
+    <wsdl:part element="tns:SaveDatasaveDataResponse1" name="wegaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SaveDatasaveDataFault">
+    <wsdl:part element="tns:SaveDatasaveDataFault1" name="wegaException"/>
+  </wsdl:message>
+  <wsdl:message name="ValidateDatavalidateDataRequest">
+    <wsdl:part element="tns:ValidateDatavalidateDataRequest1" name="wegaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ValidateDatavalidateDataResponse">
+    <wsdl:part element="tns:ValidateDatavalidateDataResponse1" name="wegaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ValidateDatavalidateDataFault">
+    <wsdl:part element="tns:ValidateDatavalidateDataFault1" name="wegaException"/>
+  </wsdl:message>
+  <wsdl:message name="GetDatagetDataRequest">
+    <wsdl:part element="tns:GetDatagetDataRequest1" name="wegaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetDatagetDataResponse">
+    <wsdl:part element="tns:GetDatagetDataResponse1" name="wegaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetDatagetDataFault">
+    <wsdl:part element="tns:GetDatagetDataFault1" name="wegaException"/>
+  </wsdl:message>
+  <wsdl:message name="GetFormatgetFormatRequest">
+    <wsdl:part element="tns:GetFormatgetFormatRequest1" name="wegaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetFormatgetFormatResponse">
+    <wsdl:part element="tns:GetFormatgetFormatResponse1" name="wegaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetFormatgetFormatFault">
+    <wsdl:part element="tns:GetFormatgetFormatFault1" name="wegaException"/>
+  </wsdl:message>
+  <wsdl:message name="DoItdoItRequest">
+    <wsdl:part element="tns:DoItdoItRequest1" name="wegaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="DoItdoItResponse">
+    <wsdl:part element="tns:DoItdoItResponse1" name="wegaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DoItdoItFault">
+    <wsdl:part element="tns:DoItdoItFault1" name="wegaException"/>
+  </wsdl:message>
+  <wsdl:portType name="ExportData">
+    <wsdl:documentation>The interface ExportData is the service endpoint interface of the web service export process.</wsdl:documentation>
+    <wsdl:operation name="exportData">
+      <wsdl:documentation>The main method of the export process. The web service decides from its configuration whereto the data have to be transferred. The data have to be transferred as WegaData. After the execution the method gives back the actual WegaData. In case of errors a WegaException is thrown with an WegaError object included containing all exceptions.</wsdl:documentation>
+      <wsdl:input message="tns:ExportDataexportDataRequest"/>
+      <wsdl:output message="tns:ExportDataexportDataResponse"/>
+      <wsdl:fault message="tns:ExportDataexportDataFault" name="exportDataFault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SaveData">
+    <wsdl:documentation>The interface SaveData is the service endpoint interface of the web service save process.</wsdl:documentation>
+    <wsdl:operation name="saveData">
+      <wsdl:documentation>The main method of the save process. The web service decides from its configuration which data have to be stored. The data have to be transferred as WegaData. After the execution the method gives back the actual WegaData. In case of errors a WegaException is thrown with an WegaError object included containing all exceptions.</wsdl:documentation>
+      <wsdl:input message="tns:SaveDatasaveDataRequest"/>
+      <wsdl:output message="tns:SaveDatasaveDataResponse"/>
+      <wsdl:fault message="tns:SaveDatasaveDataFault" name="saveDataFault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ValidateData">
+    <wsdl:documentation>The interface ValidateData is the service endpoint interface of the web service validation process.</wsdl:documentation>
+    <wsdl:operation name="validateData">
+      <wsdl:documentation>The main method of the validation process. The web service decides from its configuration which validation will be performed. The data have to be transferred as WegaData. After the execution the method gives back the actual WegaData. In case of errors a WegaException is thrown with an WegaError object included containing all exceptions.</wsdl:documentation>
+      <wsdl:input message="tns:ValidateDatavalidateDataRequest"/>
+      <wsdl:output message="tns:ValidateDatavalidateDataResponse"/>
+      <wsdl:fault message="tns:ValidateDatavalidateDataFault" name="validateDataFault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="GetData">
+    <wsdl:documentation>The interface GetData is the service endpoint interface of the web service get data process.</wsdl:documentation>
+    <wsdl:operation name="getData">
+      <wsdl:documentation>The main method of the get data process. The web service returns the metadata as well as the persistent data, if there is an user id within the WegaData transferred. The data have to be transferred as WegaData. After the execution the method gives back the actual WegaFormat. In case of errors a WegaException is thrown with an WegaError object included containing all exceptions.</wsdl:documentation>
+      <wsdl:input message="tns:GetDatagetDataRequest"/>
+      <wsdl:output message="tns:GetDatagetDataResponse"/>
+      <wsdl:fault message="tns:GetDatagetDataFault" name="getDataFault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="GetFormat">
+    <wsdl:operation name="getFormat">
+      <wsdl:input message="tns:GetFormatgetFormatRequest"/>
+      <wsdl:output message="tns:GetFormatgetFormatResponse"/>
+      <wsdl:fault message="tns:GetFormatgetFormatFault" name="getFormatFault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="DoIt">
+    <wsdl:operation name="doIt">
+      <wsdl:documentation>The main method of the do it process. The data have to be transferred as WegaData. After the execution the method gives back the actual WegaFormat. In case of errors a WegaException is thrown with an WegaError object included containing all exceptions.</wsdl:documentation>
+      <wsdl:input message="tns:DoItdoItRequest"/>
+      <wsdl:output message="tns:DoItdoItResponse"/>
+      <wsdl:fault message="tns:DoItdoItFault" name="doItFault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>https://tui-wega.audi.com/WegaService/wsdl/com/audi/wega/service/dataformat/dataformat.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://dataformat.service.wega.audi.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd_1="http://dataformat.service.wega.audi.com/" xmlns:xsd_2="http://data.service.wega.audi.com/">
+  <xsd:import namespace="http://data.service.wega.audi.com/" schemaLocation="../data/data.xsd"/>
+  <xsd:simpleType name="FormatFieldType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="STRING"/>
+      <xsd:enumeration value="INT"/>
+      <xsd:enumeration value="FLOAT"/>
+      <xsd:enumeration value="BOOLEAN"/>
+      <xsd:enumeration value="LIST"/>
+      <xsd:enumeration value="DATE"/>
+      <xsd:enumeration value="DATETIME"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="FormatAccessType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="READ"/>
+      <xsd:enumeration value="WRITE"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="FormatField">
+    <xsd:complexContent>
+      <xsd:extension base="xsd_2:DataField">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="csgElement" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="label" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="subline" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="infoText" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="example" type="xsd:string"/>
+          <xsd:element name="type" type="xsd_1:FormatFieldType"/>
+          <xsd:element name="mandatory" type="xsd:boolean"/>
+          <xsd:element name="access" type="xsd_1:FormatAccessType"/>
+          <xsd:element minOccurs="0" name="length" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="multipleSelection" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="dynamic" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="dependency" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="FormatGroup">
+    <xsd:sequence>
+      <xsd:element name="id" type="xsd:string"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="field" type="xsd_1:FormatField"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="group" type="xsd_1:FormatGroup"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="WegaFormat">
+    <xsd:sequence>
+      <xsd:element name="version" type="xsd:string"/>
+      <xsd:element name="application" type="xsd:string"/>
+      <xsd:element name="process" type="xsd:string"/>
+      <xsd:element name="languageISOId" type="xsd:string"/>
+      <xsd:element name="countryISOId" type="xsd:string"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="group" type="xsd_1:FormatGroup"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>https://tui-wega.audi.com/WegaService/wsdl/com/audi/wega/service/data/data.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://data.service.wega.audi.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd_1="http://data.service.wega.audi.com/">
+  <xsd:complexType name="DataFieldList">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="key" type="xsd:string"/>
+      <xsd:element name="value" type="xsd:string"/>
+      <xsd:element name="checked" type="xsd:boolean"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DataField">
+    <xsd:sequence>
+      <xsd:element name="id" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="value" type="xsd:string"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="list" type="xsd_1:DataFieldList"/>
+      <xsd:element minOccurs="0" name="changed" type="xsd:boolean"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DataGroup">
+    <xsd:sequence>
+      <xsd:element name="id" type="xsd:string"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="field" type="xsd_1:DataField"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="group" type="xsd_1:DataGroup"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="WegaData">
+    <xsd:annotation>
+      <xsd:documentation>The class &lt;code>WegaData&lt;/code> is the unique data container, that holds the data transfered through the web service.
+
+@author Norbert Reschauer, IBM
+@version 1.00.00</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="version" type="xsd:string"/>
+      <xsd:element name="application" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The application id of the requesting application.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="process" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The id of the requesting process, depends on the {@see application} id.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="languageISOId" type="xsd:string"/>
+      <xsd:element name="countryISOId" type="xsd:string"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="group" type="xsd_1:DataGroup"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>https://tui-wega.audi.com/WegaService/wsdl/com/audi/wega/service/exception/exception.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://exception.service.wega.audi.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd_1="http://exception.service.wega.audi.com/" xmlns:xsd_2="http://data.service.wega.audi.com/">
+  <xsd:import namespace="http://data.service.wega.audi.com/" schemaLocation="../data/data.xsd"/>
+  <xsd:simpleType name="WegaExceptionSeverity">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="INFO"/>
+      <xsd:enumeration value="WARN"/>
+      <xsd:enumeration value="ERROR"/>
+      <xsd:enumeration value="FATAL"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="ErrorChoiceColumnType">
+    <xsd:sequence>
+      <xsd:element name="fieldId" type="xsd:string"/>
+      <xsd:element name="value" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ErrorChoiceRowType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="errorChoiceColumn" type="xsd_1:ErrorChoiceColumnType"/>
+      <xsd:element name="errorChoiceRowNumber" type="xsd:int"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ErrorChoiceList">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="errorChoiceRow" type="xsd_1:ErrorChoiceRowType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FieldError">
+    <xsd:sequence>
+      <xsd:element name="errorId" type="xsd:string"/>
+      <xsd:element name="errorMessage" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="errorChoice" type="xsd_1:ErrorChoiceList"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ErrorField">
+    <xsd:complexContent>
+      <xsd:extension base="xsd_2:DataField">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="fielderror" type="xsd_1:FieldError"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ErrorGroup">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="field" type="xsd_1:ErrorField"/>
+      <xsd:element name="id" type="xsd:string"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="group" type="xsd_1:ErrorGroup"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="WegaError">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="group" type="xsd_1:ErrorGroup"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="WegaException">
+    <xsd:sequence>
+      <xsd:element name="version" type="xsd:string"/>
+      <xsd:element name="application" type="xsd:string"/>
+      <xsd:element name="process" type="xsd:string"/>
+      <xsd:element name="languageISOId" type="xsd:string"/>
+      <xsd:element name="countryISOId" type="xsd:string"/>
+      <xsd:element name="errorId" type="xsd:string"/>
+      <xsd:element name="errorType" type="xsd:string"/>
+      <xsd:element name="severity" type="xsd_1:WegaExceptionSeverity"/>
+      <xsd:element name="errorMessage" type="xsd:string"/>
+      <xsd:element name="wegaError" type="xsd_1:WegaError"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://tui-wega.audi.com/WegaService/services/GetFormatPort</con:endpoint></con:endpoints><con:operation id="54dd663c-3c00-4ad7-a651-f49111052fa5" isOneWay="false" action="http://service.wega.audi.com/WegaService/getFormat/" name="getFormat" bindingOperationName="getFormat" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b6ef1a9f-c502-4930-86cc-0e537cb91763" name="iph_salesperson_lv"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://tui-wega.audi.com/WegaService/services/GetFormatPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.wega.audi.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:GetFormatgetFormatRequest1>
+         <version>1.0</version>
+         <application>iph3</application>
+         <process>iphsalesperson_s</process>
+         <languageISOId>lv</languageISOId>
+         <countryISOId>LV</countryISOId>
+      </ser:GetFormatgetFormatRequest1>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/getFormat/"/><con:wsrmConfig version="1.2"/></con:call><con:call id="9c468c56-c852-4c88-ab50-6c8d0f58de14" name="iph_contact_lv"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://tui-wega.audi.com/WegaService/services/GetFormatPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.wega.audi.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:GetFormatgetFormatRequest1>
+         <version>1.0</version>
+         <application>iph3</application>
+         <process>iphcontact_s</process>
+         <languageISOId>lv</languageISOId>
+         <countryISOId>LV</countryISOId>
+      </ser:GetFormatgetFormatRequest1>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/getFormat/"/><con:wsrmConfig version="1.2"/></con:call><con:call id="171ff0d1-7d00-4aac-b78f-b6626939a151" name="iph_serviceperson_lv"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://tui-wega.audi.com/WegaService/services/GetFormatPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.wega.audi.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:GetFormatgetFormatRequest1>
+         <version>1.0</version>
+         <application>iph3</application>
+         <process>iphserviceperson_s</process>
+         <languageISOId>lv</languageISOId>
+         <countryISOId>LV</countryISOId>
+      </ser:GetFormatgetFormatRequest1>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/getFormat/"/><con:wsrmConfig version="1.2"/></con:call><con:call id="a56cf865-17cd-49df-895b-9d143dda953a" name="iph_servicedate_lv"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://tui-wega.audi.com/WegaService/services/GetFormatPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.wega.audi.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:GetFormatgetFormatRequest1>
+         <version>1.0</version>
+         <application>iph3</application>
+         <process>iphservicedate_s</process>
+         <languageISOId>lv</languageISOId>
+         <countryISOId>LV</countryISOId>
+      </ser:GetFormatgetFormatRequest1>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/getFormat/"/><con:wsrmConfig version="1.2"/></con:call><con:call id="3b00771b-dabe-4a84-80c9-10f4346ee8e6" name="iph_testdrive_lv"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://tui-wega.audi.com/WegaService/services/GetFormatPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.wega.audi.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:GetFormatgetFormatRequest1>
+         <version>1.0</version>
+         <application>iph3</application>
+         <process>iphtestdrive_s</process>
+         <languageISOId>lv</languageISOId>
+         <countryISOId>LV</countryISOId>
+      </ser:GetFormatgetFormatRequest1>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/getFormat/"/><con:wsrmConfig version="1.2"/></con:call><con:call id="a2e4fbb2-8f8e-42bc-9939-84afeb030d7b" name="iph_contact_lt"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://pre-wega.audi.com/WegaService/services/GetFormatPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.wega.audi.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:GetFormatgetFormatRequest1>
+         <version>1.0</version>
+         <application>iph3</application>
+         <process>iphcontact_s</process>
+         <languageISOId>lt</languageISOId>
+         <countryISOId>LT</countryISOId>
+      </ser:GetFormatgetFormatRequest1>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/getFormat/"/><con:wsrmConfig version="1.2"/></con:call><con:call id="2ce978ea-247d-4cb0-a374-a63032e4ac42" name="iph_salesperson_lt"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://tui-wega.audi.com/WegaService/services/GetFormatPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.wega.audi.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:GetFormatgetFormatRequest1>
+         <version>1.0</version>
+         <application>iph3</application>
+         <process>iphsalesperson_s</process>
+         <languageISOId>lt</languageISOId>
+         <countryISOId>LT</countryISOId>
+      </ser:GetFormatgetFormatRequest1>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/getFormat/"/><con:wsrmConfig version="1.2"/></con:call><con:call id="c18edb2b-5eb5-430b-9710-167e01b2a5aa" name="iph_servicedate_lt"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://pre-wega.audi.com/WegaService/services/GetFormatPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.wega.audi.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:GetFormatgetFormatRequest1>
+         <version>1.0</version>
+         <application>iph3</application>
+         <process>iphservicedate_s</process>
+         <languageISOId>lt</languageISOId>
+         <countryISOId>LT</countryISOId>
+      </ser:GetFormatgetFormatRequest1>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/getFormat/"/><con:wsrmConfig version="1.2"/></con:call><con:call id="23c8ed47-6f10-49f8-a0c1-dc8fa435a58a" name="iph_serviceperson_lt"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://tui-wega.audi.com/WegaService/services/GetFormatPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.wega.audi.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:GetFormatgetFormatRequest1>
+         <version>1.0</version>
+         <application>iph3</application>
+         <process>iphserviceperson_s</process>
+         <languageISOId>lt</languageISOId>
+         <countryISOId>LT</countryISOId>
+      </ser:GetFormatgetFormatRequest1>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/getFormat/"/><con:wsrmConfig version="1.2"/></con:call><con:call id="4259ae34-e1d3-4f38-b850-7fbb921e30e8" name="iph_testdrive_lt"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://pre-wega.audi.com/WegaService/services/GetFormatPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.wega.audi.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:GetFormatgetFormatRequest1>
+         <version>1.0</version>
+         <application>iph3</application>
+         <process>iphtestdrive_s</process>
+         <languageISOId>de</languageISOId>
+         <countryISOId>DE</countryISOId>
+      </ser:GetFormatgetFormatRequest1>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/getFormat/"/><con:wsrmConfig version="1.2"/></con:call><con:call id="77ac55bd-61d0-416b-a5b4-dd5d5c73c10b" name="iph_contact_de"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://pre-wega.audi.com/WegaService/services/GetFormatPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.wega.audi.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ser:GetFormatgetFormatRequest1>\r
+        <version>1.0</version>
+         <application>iph3</application>
+         <process>iphserviceperson_s_dsgvo</process>
+         <languageISOId>de</languageISOId>
+         <countryISOId>DE</countryISOId>
+      </ser:GetFormatgetFormatRequest1>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/getFormat/"/><con:wsrmConfig version="1.2"/></con:call><con:call id="ea2973d9-7cd6-4dac-bef3-51b7fd77fd7f" name="iph_serviceperson_en"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://pre-wega.audi.com/WegaService/services/GetFormatPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.wega.audi.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:GetFormatgetFormatRequest1>
+         <version>1.0</version>
+         <application>iph3</application>
+         <process>iphserviceperson_s</process>
+         <languageISOId>en</languageISOId>
+         <countryISOId>IE</countryISOId>
+      </ser:GetFormatgetFormatRequest1>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/getFormat/"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="557579de-b420-4fe0-9919-67b23bdec2c9" wsaVersion="NONE" name="GetDataBinding" type="wsdl" bindingName="{http://service.wega.audi.com/WegaService/}GetDataBinding" soapVersion="1_1" anonymous="optional" definition="https://tui-wega.audi.com/WegaService/services/GetFormatPort?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://tui-wega.audi.com/WegaService/services/GetDataPort</con:endpoint></con:endpoints><con:operation id="c1a4b936-e71d-4ce4-9561-8fd98403f90b" isOneWay="false" action="http://service.wega.audi.com/WegaService/getData/" name="getData" bindingOperationName="getData" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f1d8e730-dee1-4f7e-bb82-54c23dafde88" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://tui-wega.audi.com/WegaService/services/GetDataPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.wega.audi.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ser:GetDatagetDataRequest1>\r
+         <version>?</version>\r
+         <application>?</application>\r
+         <process>?</process>\r
+         <languageISOId>?</languageISOId>\r
+         <countryISOId>?</countryISOId>\r
+         <!--Zero or more repetitions:-->\r
+         <group>\r
+            <id>?</id>\r
+            <!--Zero or more repetitions:-->\r
+            <field>\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <value>?</value>\r
+               <!--Zero or more repetitions:-->\r
+               <list>\r
+                  <!--Optional:-->\r
+                  <key>?</key>\r
+                  <value>?</value>\r
+                  <checked>?</checked>\r
+               </list>\r
+               <!--Optional:-->\r
+               <changed>?</changed>\r
+            </field>\r
+            <!--Zero or more repetitions:-->\r
+            <group/>\r
+         </group>\r
+      </ser:GetDatagetDataRequest1>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/getData/"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="d1504838-a86f-49c4-9fac-11fb8609dbc7" wsaVersion="NONE" name="SaveDataBinding" type="wsdl" bindingName="{http://service.wega.audi.com/WegaService/}SaveDataBinding" soapVersion="1_1" anonymous="optional" definition="https://tui-wega.audi.com/WegaService/services/GetFormatPort?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://tui-wega.audi.com/WegaService/services/SaveDataPort</con:endpoint></con:endpoints><con:operation id="45c07978-3d96-44be-8a2b-2e3275a7f9bb" isOneWay="false" action="http://service.wega.audi.com/WegaService/saveData/" name="saveData" bindingOperationName="saveData" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="36731fdf-b574-4193-950f-fc4d7172c6fa" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://tui-wega.audi.com/WegaService/services/SaveDataPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.wega.audi.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ser:SaveDatasaveDataRequest1>\r
+         <version>?</version>\r
+         <application>?</application>\r
+         <process>?</process>\r
+         <languageISOId>?</languageISOId>\r
+         <countryISOId>?</countryISOId>\r
+         <!--Zero or more repetitions:-->\r
+         <group>\r
+            <id>?</id>\r
+            <!--Zero or more repetitions:-->\r
+            <field>\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <value>?</value>\r
+               <!--Zero or more repetitions:-->\r
+               <list>\r
+                  <!--Optional:-->\r
+                  <key>?</key>\r
+                  <value>?</value>\r
+                  <checked>?</checked>\r
+               </list>\r
+               <!--Optional:-->\r
+               <changed>?</changed>\r
+            </field>\r
+            <!--Zero or more repetitions:-->\r
+            <group/>\r
+         </group>\r
+      </ser:SaveDatasaveDataRequest1>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/saveData/"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="5b6089a5-c22c-404e-afb7-003ef334ed36" wsaVersion="NONE" name="ExportDataBinding" type="wsdl" bindingName="{http://service.wega.audi.com/WegaService/}ExportDataBinding" soapVersion="1_1" anonymous="optional" definition="https://tui-wega.audi.com/WegaService/services/GetFormatPort?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="https://tui-wega.audi.com/WegaService/services/GetFormatPort?wsdl"><con:part><con:url>https://tui-wega.audi.com/WegaService/services/GetFormatPort?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="WegaService" targetNamespace="http://service.wega.audi.com/WegaService/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://service.wega.audi.com/WegaService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl_1="http://service.wega.audi.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>The WEGA service is the web service for centralized validating, storing, and exporting data from web applications. 
+It provides 4 service ports: GetDataPort, ValidateDataPort, SaveDataPort, and ExportDataPort. The GetDataPort 
+returns the meta data as well as the persistant data back to the web application. The ValidateDataPort provides 
+different validation mechanisms depending on the calling application. The SaveDataPort is used for storing data into 
+the database, in the initial version of the web service the user profile can be stored. The ExportDataPort is used to
+ transfer data from the web applications to external legacy systems, like the SAP CRM system KuBa. The web service
+contains an internal workflow engine, which manages the validation and the export. The calling web application needs
+not to know which validations and exports will be performed.</wsdl:documentation>
+  <wsdl:import location="../wsdl/com/audi/wega/service/service.wsdl" namespace="http://service.wega.audi.com/"/>
+  <wsdl:binding name="ExportDataBinding" type="wsdl_1:ExportData">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="exportData">
+      <soap:operation soapAction="http://service.wega.audi.com/WegaService/exportData/"/>
+      <wsdl:input>
+        <soap:body parts="wegaRequest" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="wegaResponse" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="exportDataFault">
+        <soap:fault name="exportDataFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SaveDataBinding" type="wsdl_1:SaveData">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="saveData">
+      <soap:operation soapAction="http://service.wega.audi.com/WegaService/saveData/"/>
+      <wsdl:input>
+        <soap:body parts="wegaRequest" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="wegaResponse" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="saveDataFault">
+        <soap:fault name="saveDataFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ValidateDataBinding" type="wsdl_1:ValidateData">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="validateData">
+      <soap:operation soapAction="http://service.wega.audi.com/WegaService/validateData/"/>
+      <wsdl:input>
+        <soap:body parts="wegaRequest" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="wegaResponse" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="validateDataFault">
+        <soap:fault name="validateDataFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GetDataBinding" type="wsdl_1:GetData">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getData">
+      <soap:operation soapAction="http://service.wega.audi.com/WegaService/getData/"/>
+      <wsdl:input>
+        <soap:body parts="wegaRequest" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="wegaResponse" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getDataFault">
+        <soap:fault name="getDataFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GetFormatBinding" type="wsdl_1:GetFormat">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getFormat">
+      <soap:operation soapAction="http://service.wega.audi.com/WegaService/getFormat/"/>
+      <wsdl:input>
+        <soap:body parts="wegaRequest" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="wegaResponse" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getFormatFault">
+        <soap:fault name="getFormatFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DoItBinding" type="wsdl_1:DoIt">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="doIt">
+      <soap:operation soapAction="http://service.wega.audi.com/WegaService/doIt/"/>
+      <wsdl:input>
+        <soap:body parts="wegaRequest" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="wegaResponse" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="doItFault">
+        <soap:fault name="doItFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wega">
+    <wsdl:port binding="tns:ExportDataBinding" name="ExportDataPort">
+      <soap:address location="http://tui-wega.audi.com/WegaService/services/ExportDataPort"/>
+    </wsdl:port>
+    <wsdl:port binding="tns:SaveDataBinding" name="SaveDataPort">
+      <soap:address location="http://tui-wega.audi.com/WegaService/services/SaveDataPort"/>
+    </wsdl:port>
+    <wsdl:port binding="tns:ValidateDataBinding" name="ValidateDataPort">
+      <soap:address location="http://tui-wega.audi.com/WegaService/services/ValidateDataPort"/>
+    </wsdl:port>
+    <wsdl:port binding="tns:GetDataBinding" name="GetDataPort">
+      <soap:address location="http://tui-wega.audi.com/WegaService/services/GetDataPort"/>
+    </wsdl:port>
+    <wsdl:port binding="tns:GetFormatBinding" name="GetFormatPort">
+      <soap:address location="http://tui-wega.audi.com/WegaService/services/GetFormatPort"/>
+    </wsdl:port>
+    <wsdl:port binding="tns:DoItBinding" name="DoItPort">
+      <soap:address location="http://tui-wega.audi.com/WegaService/services/DoItPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>https://tui-wega.audi.com/WegaService/wsdl/com/audi/wega/service/service.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="service" targetNamespace="http://service.wega.audi.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://service.wega.audi.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://service.wega.audi.com/" xmlns:xsd_1="http://data.service.wega.audi.com/" xmlns:xsd_2="http://exception.service.wega.audi.com/" xmlns:xsd_3="http://dataformat.service.wega.audi.com/">
+      <xsd:import namespace="http://dataformat.service.wega.audi.com/" schemaLocation="dataformat/dataformat.xsd"/>
+      <xsd:import namespace="http://exception.service.wega.audi.com/" schemaLocation="exception/exception.xsd"/>
+      <xsd:import namespace="http://data.service.wega.audi.com/" schemaLocation="data/data.xsd"/>
+      <xsd:element name="ExportDataexportDataRequest1" type="xsd_1:WegaData"/>
+      <xsd:element name="ExportDataexportDataResponse1" type="xsd_1:WegaData"/>
+      <xsd:element name="ExportDataexportDataFault1" type="xsd_2:WegaException"/>
+      <xsd:element name="SaveDatasaveDataRequest1" type="xsd_1:WegaData"/>
+      <xsd:element name="SaveDatasaveDataResponse1" type="xsd_1:WegaData"/>
+      <xsd:element name="SaveDatasaveDataFault1" type="xsd_2:WegaException"/>
+      <xsd:element name="ValidateDatavalidateDataRequest1" type="xsd_1:WegaData"/>
+      <xsd:element name="ValidateDatavalidateDataResponse1" type="xsd_1:WegaData"/>
+      <xsd:element name="ValidateDatavalidateDataFault1" type="xsd_2:WegaException"/>
+      <xsd:element name="GetDatagetDataRequest1" type="xsd_1:WegaData"/>
+      <xsd:element name="GetDatagetDataResponse1" type="xsd_1:WegaData"/>
+      <xsd:element name="GetDatagetDataFault1" type="xsd_2:WegaException"/>
+      <xsd:element name="GetFormatgetFormatRequest1" type="xsd_1:WegaData"/>
+      <xsd:element name="GetFormatgetFormatResponse1" type="xsd_3:WegaFormat"/>
+      <xsd:element name="GetFormatgetFormatFault1" type="xsd_2:WegaException"/>
+      <xsd:element name="DoItdoItRequest1" type="xsd_1:WegaData"/>
+      <xsd:element name="DoItdoItFault1" type="xsd_2:WegaException"/>
+      <xsd:element name="DoItdoItResponse1" type="xsd_1:WegaData"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ExportDataexportDataRequest">
+    <wsdl:part element="tns:ExportDataexportDataRequest1" name="wegaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ExportDataexportDataResponse">
+    <wsdl:part element="tns:ExportDataexportDataResponse1" name="wegaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ExportDataexportDataFault">
+    <wsdl:part element="tns:ExportDataexportDataFault1" name="wegaException"/>
+  </wsdl:message>
+  <wsdl:message name="SaveDatasaveDataRequest">
+    <wsdl:part element="tns:SaveDatasaveDataRequest1" name="wegaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="SaveDatasaveDataResponse">
+    <wsdl:part element="tns:SaveDatasaveDataResponse1" name="wegaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SaveDatasaveDataFault">
+    <wsdl:part element="tns:SaveDatasaveDataFault1" name="wegaException"/>
+  </wsdl:message>
+  <wsdl:message name="ValidateDatavalidateDataRequest">
+    <wsdl:part element="tns:ValidateDatavalidateDataRequest1" name="wegaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ValidateDatavalidateDataResponse">
+    <wsdl:part element="tns:ValidateDatavalidateDataResponse1" name="wegaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ValidateDatavalidateDataFault">
+    <wsdl:part element="tns:ValidateDatavalidateDataFault1" name="wegaException"/>
+  </wsdl:message>
+  <wsdl:message name="GetDatagetDataRequest">
+    <wsdl:part element="tns:GetDatagetDataRequest1" name="wegaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetDatagetDataResponse">
+    <wsdl:part element="tns:GetDatagetDataResponse1" name="wegaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetDatagetDataFault">
+    <wsdl:part element="tns:GetDatagetDataFault1" name="wegaException"/>
+  </wsdl:message>
+  <wsdl:message name="GetFormatgetFormatRequest">
+    <wsdl:part element="tns:GetFormatgetFormatRequest1" name="wegaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetFormatgetFormatResponse">
+    <wsdl:part element="tns:GetFormatgetFormatResponse1" name="wegaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetFormatgetFormatFault">
+    <wsdl:part element="tns:GetFormatgetFormatFault1" name="wegaException"/>
+  </wsdl:message>
+  <wsdl:message name="DoItdoItRequest">
+    <wsdl:part element="tns:DoItdoItRequest1" name="wegaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="DoItdoItResponse">
+    <wsdl:part element="tns:DoItdoItResponse1" name="wegaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DoItdoItFault">
+    <wsdl:part element="tns:DoItdoItFault1" name="wegaException"/>
+  </wsdl:message>
+  <wsdl:portType name="ExportData">
+    <wsdl:documentation>The interface ExportData is the service endpoint interface of the web service export process.</wsdl:documentation>
+    <wsdl:operation name="exportData">
+      <wsdl:documentation>The main method of the export process. The web service decides from its configuration whereto the data have to be transferred. The data have to be transferred as WegaData. After the execution the method gives back the actual WegaData. In case of errors a WegaException is thrown with an WegaError object included containing all exceptions.</wsdl:documentation>
+      <wsdl:input message="tns:ExportDataexportDataRequest"/>
+      <wsdl:output message="tns:ExportDataexportDataResponse"/>
+      <wsdl:fault message="tns:ExportDataexportDataFault" name="exportDataFault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SaveData">
+    <wsdl:documentation>The interface SaveData is the service endpoint interface of the web service save process.</wsdl:documentation>
+    <wsdl:operation name="saveData">
+      <wsdl:documentation>The main method of the save process. The web service decides from its configuration which data have to be stored. The data have to be transferred as WegaData. After the execution the method gives back the actual WegaData. In case of errors a WegaException is thrown with an WegaError object included containing all exceptions.</wsdl:documentation>
+      <wsdl:input message="tns:SaveDatasaveDataRequest"/>
+      <wsdl:output message="tns:SaveDatasaveDataResponse"/>
+      <wsdl:fault message="tns:SaveDatasaveDataFault" name="saveDataFault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ValidateData">
+    <wsdl:documentation>The interface ValidateData is the service endpoint interface of the web service validation process.</wsdl:documentation>
+    <wsdl:operation name="validateData">
+      <wsdl:documentation>The main method of the validation process. The web service decides from its configuration which validation will be performed. The data have to be transferred as WegaData. After the execution the method gives back the actual WegaData. In case of errors a WegaException is thrown with an WegaError object included containing all exceptions.</wsdl:documentation>
+      <wsdl:input message="tns:ValidateDatavalidateDataRequest"/>
+      <wsdl:output message="tns:ValidateDatavalidateDataResponse"/>
+      <wsdl:fault message="tns:ValidateDatavalidateDataFault" name="validateDataFault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="GetData">
+    <wsdl:documentation>The interface GetData is the service endpoint interface of the web service get data process.</wsdl:documentation>
+    <wsdl:operation name="getData">
+      <wsdl:documentation>The main method of the get data process. The web service returns the metadata as well as the persistent data, if there is an user id within the WegaData transferred. The data have to be transferred as WegaData. After the execution the method gives back the actual WegaFormat. In case of errors a WegaException is thrown with an WegaError object included containing all exceptions.</wsdl:documentation>
+      <wsdl:input message="tns:GetDatagetDataRequest"/>
+      <wsdl:output message="tns:GetDatagetDataResponse"/>
+      <wsdl:fault message="tns:GetDatagetDataFault" name="getDataFault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="GetFormat">
+    <wsdl:operation name="getFormat">
+      <wsdl:input message="tns:GetFormatgetFormatRequest"/>
+      <wsdl:output message="tns:GetFormatgetFormatResponse"/>
+      <wsdl:fault message="tns:GetFormatgetFormatFault" name="getFormatFault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="DoIt">
+    <wsdl:operation name="doIt">
+      <wsdl:documentation>The main method of the do it process. The data have to be transferred as WegaData. After the execution the method gives back the actual WegaFormat. In case of errors a WegaException is thrown with an WegaError object included containing all exceptions.</wsdl:documentation>
+      <wsdl:input message="tns:DoItdoItRequest"/>
+      <wsdl:output message="tns:DoItdoItResponse"/>
+      <wsdl:fault message="tns:DoItdoItFault" name="doItFault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>https://tui-wega.audi.com/WegaService/wsdl/com/audi/wega/service/dataformat/dataformat.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://dataformat.service.wega.audi.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd_1="http://dataformat.service.wega.audi.com/" xmlns:xsd_2="http://data.service.wega.audi.com/">
+  <xsd:import namespace="http://data.service.wega.audi.com/" schemaLocation="../data/data.xsd"/>
+  <xsd:simpleType name="FormatFieldType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="STRING"/>
+      <xsd:enumeration value="INT"/>
+      <xsd:enumeration value="FLOAT"/>
+      <xsd:enumeration value="BOOLEAN"/>
+      <xsd:enumeration value="LIST"/>
+      <xsd:enumeration value="DATE"/>
+      <xsd:enumeration value="DATETIME"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="FormatAccessType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="READ"/>
+      <xsd:enumeration value="WRITE"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="FormatField">
+    <xsd:complexContent>
+      <xsd:extension base="xsd_2:DataField">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="csgElement" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="label" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="subline" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="infoText" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="example" type="xsd:string"/>
+          <xsd:element name="type" type="xsd_1:FormatFieldType"/>
+          <xsd:element name="mandatory" type="xsd:boolean"/>
+          <xsd:element name="access" type="xsd_1:FormatAccessType"/>
+          <xsd:element minOccurs="0" name="length" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="multipleSelection" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="dynamic" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="dependency" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="FormatGroup">
+    <xsd:sequence>
+      <xsd:element name="id" type="xsd:string"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="field" type="xsd_1:FormatField"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="group" type="xsd_1:FormatGroup"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="WegaFormat">
+    <xsd:sequence>
+      <xsd:element name="version" type="xsd:string"/>
+      <xsd:element name="application" type="xsd:string"/>
+      <xsd:element name="process" type="xsd:string"/>
+      <xsd:element name="languageISOId" type="xsd:string"/>
+      <xsd:element name="countryISOId" type="xsd:string"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="group" type="xsd_1:FormatGroup"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>https://tui-wega.audi.com/WegaService/wsdl/com/audi/wega/service/data/data.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://data.service.wega.audi.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd_1="http://data.service.wega.audi.com/">
+  <xsd:complexType name="DataFieldList">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="key" type="xsd:string"/>
+      <xsd:element name="value" type="xsd:string"/>
+      <xsd:element name="checked" type="xsd:boolean"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DataField">
+    <xsd:sequence>
+      <xsd:element name="id" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="value" type="xsd:string"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="list" type="xsd_1:DataFieldList"/>
+      <xsd:element minOccurs="0" name="changed" type="xsd:boolean"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DataGroup">
+    <xsd:sequence>
+      <xsd:element name="id" type="xsd:string"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="field" type="xsd_1:DataField"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="group" type="xsd_1:DataGroup"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="WegaData">
+    <xsd:annotation>
+      <xsd:documentation>The class &lt;code>WegaData&lt;/code> is the unique data container, that holds the data transfered through the web service.
+
+@author Norbert Reschauer, IBM
+@version 1.00.00</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="version" type="xsd:string"/>
+      <xsd:element name="application" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The application id of the requesting application.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="process" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The id of the requesting process, depends on the {@see application} id.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="languageISOId" type="xsd:string"/>
+      <xsd:element name="countryISOId" type="xsd:string"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="group" type="xsd_1:DataGroup"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>https://tui-wega.audi.com/WegaService/wsdl/com/audi/wega/service/exception/exception.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://exception.service.wega.audi.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd_1="http://exception.service.wega.audi.com/" xmlns:xsd_2="http://data.service.wega.audi.com/">
+  <xsd:import namespace="http://data.service.wega.audi.com/" schemaLocation="../data/data.xsd"/>
+  <xsd:simpleType name="WegaExceptionSeverity">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="INFO"/>
+      <xsd:enumeration value="WARN"/>
+      <xsd:enumeration value="ERROR"/>
+      <xsd:enumeration value="FATAL"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="ErrorChoiceColumnType">
+    <xsd:sequence>
+      <xsd:element name="fieldId" type="xsd:string"/>
+      <xsd:element name="value" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ErrorChoiceRowType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="errorChoiceColumn" type="xsd_1:ErrorChoiceColumnType"/>
+      <xsd:element name="errorChoiceRowNumber" type="xsd:int"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ErrorChoiceList">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="errorChoiceRow" type="xsd_1:ErrorChoiceRowType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FieldError">
+    <xsd:sequence>
+      <xsd:element name="errorId" type="xsd:string"/>
+      <xsd:element name="errorMessage" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="errorChoice" type="xsd_1:ErrorChoiceList"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ErrorField">
+    <xsd:complexContent>
+      <xsd:extension base="xsd_2:DataField">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="fielderror" type="xsd_1:FieldError"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ErrorGroup">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="field" type="xsd_1:ErrorField"/>
+      <xsd:element name="id" type="xsd:string"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="group" type="xsd_1:ErrorGroup"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="WegaError">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="group" type="xsd_1:ErrorGroup"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="WegaException">
+    <xsd:sequence>
+      <xsd:element name="version" type="xsd:string"/>
+      <xsd:element name="application" type="xsd:string"/>
+      <xsd:element name="process" type="xsd:string"/>
+      <xsd:element name="languageISOId" type="xsd:string"/>
+      <xsd:element name="countryISOId" type="xsd:string"/>
+      <xsd:element name="errorId" type="xsd:string"/>
+      <xsd:element name="errorType" type="xsd:string"/>
+      <xsd:element name="severity" type="xsd_1:WegaExceptionSeverity"/>
+      <xsd:element name="errorMessage" type="xsd:string"/>
+      <xsd:element name="wegaError" type="xsd_1:WegaError"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://tui-wega.audi.com/WegaService/services/ExportDataPort</con:endpoint></con:endpoints><con:operation id="eb68b8d2-2839-45bb-ae57-659f41ee5d55" isOneWay="false" action="http://service.wega.audi.com/WegaService/exportData/" name="exportData" bindingOperationName="exportData" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3ed725b9-50a3-4db1-8ec0-0c5dcad894df" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://tui-wega.audi.com/WegaService/services/ExportDataPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.wega.audi.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ser:ExportDataexportDataRequest1>\r
+         <version>?</version>\r
+         <application>?</application>\r
+         <process>?</process>\r
+         <languageISOId>?</languageISOId>\r
+         <countryISOId>?</countryISOId>\r
+         <!--Zero or more repetitions:-->\r
+         <group>\r
+            <id>?</id>\r
+            <!--Zero or more repetitions:-->\r
+            <field>\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <value>?</value>\r
+               <!--Zero or more repetitions:-->\r
+               <list>\r
+                  <!--Optional:-->\r
+                  <key>?</key>\r
+                  <value>?</value>\r
+                  <checked>?</checked>\r
+               </list>\r
+               <!--Optional:-->\r
+               <changed>?</changed>\r
+            </field>\r
+            <!--Zero or more repetitions:-->\r
+            <group/>\r
+         </group>\r
+      </ser:ExportDataexportDataRequest1>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://service.wega.audi.com/WegaService/exportData/"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

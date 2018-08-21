@@ -6,7 +6,7 @@ const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
 const FileServiceUploadAction = express.Router();
-const FileServiceUnzipAction = express.Router();
+//const FileServiceUnzipAction = express.Router();
 
 const storage = multer.diskStorage({
       destination: (req, file, cb) => {
@@ -30,6 +30,7 @@ FileServiceUploadAction.route('/upload').post(upload.single('file'), (req, res) 
           res.send(response);
         });
 
+/*
 FileServiceUnzipAction.route('/unzip').post(upload.single('file'), (req, res) => {
                   var response = {
                     "msg": "file uploaded",
@@ -40,6 +41,8 @@ FileServiceUnzipAction.route('/unzip').post(upload.single('file'), (req, res) =>
                   }
                   res.send(response);
                 });
+
+*/
 
 
 module.exports = FileServiceUploadAction;
